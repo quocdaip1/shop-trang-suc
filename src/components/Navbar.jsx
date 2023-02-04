@@ -55,7 +55,8 @@ export default function () {
                 <span></span>
                 <ul className="list-menu-child">
                   <li className="nav-item-lv2"><Link>Về chúng tôi</Link></li>
-                  <li className="nav-item-lv2"><Link>Chính sách</Link></li>
+                  <li className="nav-item-lv2"><Link>Chính sách
+                  </Link></li>
                   <li className="nav-item-lv2"><Link>Hỗ trợ</Link></li>
                   <li className="nav-item-lv2"><Link>Contact</Link></li>
                 </ul>
