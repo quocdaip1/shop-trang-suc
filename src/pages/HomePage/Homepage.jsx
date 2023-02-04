@@ -25,10 +25,6 @@ function SamplePrevArrow(props) {
   );
 }
 
-function Maxlength(props) {
-  const { maxlength } = props;
-}
-
 export default function () {
   const settings1 = {
     speed: 500,

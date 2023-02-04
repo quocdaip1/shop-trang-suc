@@ -33,7 +33,7 @@ export default function () {
                 </NavLink>
                 <span></span>
               </li>
-              <li>
+              <li className="nav-item-lv1">
                 <NavLink end>SHOP</NavLink>
                 <span></span>
               </li>
