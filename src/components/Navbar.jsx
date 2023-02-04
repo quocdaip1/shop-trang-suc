@@ -28,34 +28,40 @@ export default function () {
           <nav>
             <ul className="list-menu d-flex justify-content-space-aroud">
               <li className="nav-item-lv1">
-                <NavLink href={<Homepage />} end>
+                <NavLink className="link" href={<Homepage />} end>
                   MENU
                 </NavLink>
                 <span></span>
               </li>
               <li className="nav-item-lv1">
-                <NavLink end>SHOP</NavLink>
+                <NavLink className="link" end>SHOP</NavLink>
                 <span></span>
               </li>
               <li className="nav-item-lv1">
-                <NavLink end>GIFTS <i className="fa-solid fa-chevron-down"></i>
+                <NavLink className="link" end>GIFTS <i className="fa-solid fa-chevron-down"></i>
                 </NavLink>
                 <span></span>
                 <ul className="list-menu-child">
-                  <li><Link>Quà tặng năm mới</Link></li>
-                  <li><Link>Quà tặng Valantine</Link></li>
-                  <li><Link>Quà tặng Sinh nhật</Link></li>
-                  <li><Link>Quà tặng cặp đôi</Link></li>
-                  <li><Link>Ngày kỷ niệm</Link></li>
+                  <li className="nav-item-lv2"><Link>Quà tặng năm mới</Link></li>
+                  <li className="nav-item-lv2"><Link>Quà tặng Valantine</Link></li>
+                  <li className="nav-item-lv2"><Link>Quà tặng Sinh nhật</Link></li>
+                  <li className="nav-item-lv2"><Link>Quà tặng cặp đôi</Link></li>
+                  <li className="nav-item-lv2"><Link>Ngày kỷ niệm</Link></li>
                 </ul>
               </li>
              
               <li className="nav-item-lv1">
-                <NavLink end>ABOUT US <i className="fa-solid fa-chevron-down"></i></NavLink>
+                <NavLink className="link" end>ABOUT US <i className="fa-solid fa-chevron-down"></i></NavLink>
                 <span></span>
+                <ul className="list-menu-child">
+                  <li className="nav-item-lv2"><Link>Về chúng tôi</Link></li>
+                  <li className="nav-item-lv2"><Link>Chính sách</Link></li>
+                  <li className="nav-item-lv2"><Link>Hỗ trợ</Link></li>
+                  <li className="nav-item-lv2"><Link>Contact</Link></li>
+                </ul>
               </li>
               <li className="nav-item-lv1">
-                <NavLink end>BLOG</NavLink>
+                <NavLink className="link" end>BLOG</NavLink>
                 <span></span>
               </li>
             </ul>

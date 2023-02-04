@@ -60,16 +60,33 @@
   position: relative;
 }
 .nav-midder .down nav .list-menu .nav-item-lv1 .list-menu-child{
-  text-align: left;
-  top:0;
+  top:100%;
   left: 0;
   position: absolute;
-  width: 100% !important;
-  display: none;
-
+  background-color: white;
+  width: 130%;
+  transform: translateY(20%);
+  visibility: hidden;
+  padding: 0;
 }
-.nav-midder .down nav .list-menu .nav-item-lv1:hover a {
+.nav-midder .down nav .list-menu .nav-item-lv1:hover .list-menu-child{
+  transform: translateY(0);
+  transition-duration: 0.3s;
+  visibility:visible;
+}
+.nav-midder .down nav .list-menu .nav-item-lv1 .list-menu-child li {
+  padding-left:1rem;
+  width: 100%;
+  min-height: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.nav-midder .down nav .list-menu .nav-item-lv1:hover .link , .nav-midder .down nav .list-menu .nav-item-lv1 .nav-item-lv2:hover a {
   color: #4caab1;
+}
+.nav-midder .down nav .list-menu .nav-item-lv1 .nav-item-lv2:hover{
+  background-color: whitesmoke;
 }
 .nav-midder .down nav .list-menu .nav-item-lv1 a {
   font-size: 1.5rem;
@@ -106,6 +123,7 @@
 
 
 
+
 /* end middle */
 /* left */
 .acction-account {
@@ -125,22 +143,22 @@
   font-size: 1.7rem;
 }
 
-.acction-account .list-acction-account .nav-item-lv1 {
+.acction-account .list-acction-account li {
   text-align: center;
   cursor: pointer;
 }
 
-.acction-account .list-acction-account .nav-item-lv1:hover p {
+.acction-account .list-acction-account li:hover p {
   color: #4caab1;
 }
 
-.acction-account .list-acction-account .nav-item-lv1 p {
+.acction-account .list-acction-account li p {
   text-transform: uppercase;
   font-weight: bold;
   margin-top: 0.5rem;
 }
 
-.acction-account .list-acction-account .nav-item-lv1 a {
+.acction-account .list-acction-account li a {
   color: rgb(71, 71, 71);
 }
 
