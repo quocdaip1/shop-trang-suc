@@ -50,7 +50,7 @@
 .nav-midder .down nav .list-menu {
   padding-left: 0;
 }
-.nav-midder .down nav .list-menu li {
+.nav-midder .down nav .list-menu .nav-item-lv1 {
   width: 20%;
   height: 4rem;
   display: flex;
@@ -59,7 +59,7 @@
   cursor: pointer;
   position: relative;
 }
-.nav-midder .down nav .list-menu li .list-menu-child{
+.nav-midder .down nav .list-menu .nav-item-lv1 .list-menu-child{
   text-align: left;
   top:0;
   left: 0;
@@ -68,22 +68,22 @@
   display: none;
 
 }
-.nav-midder .down nav .list-menu li:hover a {
+.nav-midder .down nav .list-menu .nav-item-lv1:hover a {
   color: #4caab1;
 }
-.nav-midder .down nav .list-menu li a {
+.nav-midder .down nav .list-menu .nav-item-lv1 a {
   font-size: 1.5rem;
   color: #333;
   font-weight: 500;
 }
-.nav-midder .down nav .list-menu li a i{
+.nav-midder .down nav .list-menu .nav-item-lv1 a i{
   font-size: 1rem;
   transition: 0.5s;
 }
-.nav-midder .down nav .list-menu li:hover i{
+.nav-midder .down nav .list-menu .nav-item-lv1:hover i{
   transform: rotate(180deg);
 }
-.nav-midder .down nav .list-menu li:hover span{
+.nav-midder .down nav .list-menu .nav-item-lv1:hover span{
     bottom: 0;
     left: 0;
     content: '';
@@ -125,22 +125,22 @@
   font-size: 1.7rem;
 }
 
-.acction-account .list-acction-account li {
+.acction-account .list-acction-account .nav-item-lv1 {
   text-align: center;
   cursor: pointer;
 }
 
-.acction-account .list-acction-account li:hover p {
+.acction-account .list-acction-account .nav-item-lv1:hover p {
   color: #4caab1;
 }
 
-.acction-account .list-acction-account li p {
+.acction-account .list-acction-account .nav-item-lv1 p {
   text-transform: uppercase;
   font-weight: bold;
   margin-top: 0.5rem;
 }
 
-.acction-account .list-acction-account li a {
+.acction-account .list-acction-account .nav-item-lv1 a {
   color: rgb(71, 71, 71);
 }
 

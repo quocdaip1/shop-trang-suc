@@ -27,7 +27,7 @@ export default function () {
         <div className="down">
           <nav>
             <ul className="list-menu d-flex justify-content-space-aroud">
-              <li>
+              <li className="nav-item-lv1">
                 <NavLink href={<Homepage />} end>
                   MENU
                 </NavLink>
@@ -37,7 +37,7 @@ export default function () {
                 <NavLink end>SHOP</NavLink>
                 <span></span>
               </li>
-              <li>
+              <li className="nav-item-lv1">
                 <NavLink end>GIFTS <i className="fa-solid fa-chevron-down"></i>
                 </NavLink>
                 <span></span>
@@ -50,11 +50,11 @@ export default function () {
                 </ul>
               </li>
              
-              <li>
+              <li className="nav-item-lv1">
                 <NavLink end>ABOUT US <i className="fa-solid fa-chevron-down"></i></NavLink>
                 <span></span>
               </li>
-              <li>
+              <li className="nav-item-lv1">
                 <NavLink end>BLOG</NavLink>
                 <span></span>
               </li>
