@@ -18,11 +18,7 @@ header .slider-wrapper {
 }
 /* main */
 /* main-service */
-.container{
-  max-width: 900rem !important;
-  padding-left: calc(5rem * .5) !important;
-  padding-right: calc(5rem * .5) !important;
-}
+
 main {
   margin-top: 5rem;
   min-height: 100vh;

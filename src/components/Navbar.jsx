@@ -3,7 +3,8 @@ import Homepage from "../pages/HomePage/Homepage";
 import "../style/Navbar.css";
 export default function () {
   return (
-    <div className="navBar d-flex justify-content-between">
+   <div className="container">
+     <div className="navBar d-flex justify-content-between">
       <div className="logo-wrapper ">
         <img src="./imgs/logo.webp" alt="" />
       </div>
@@ -98,5 +99,6 @@ export default function () {
         </ul>
       </div>
     </div>
+   </div>
   );
 }
