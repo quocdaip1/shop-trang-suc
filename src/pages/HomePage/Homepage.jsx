@@ -1,39 +1,26 @@
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/NavBar/Navbar";
 import "../../style/HomePage.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Footer from "../../components/Footer/Footer";
+import ListProducts from "../../components/ListProducts/ListProducts";
 
-function SampleNextArrow(props) {
-  const { onClick } = props;
-  return (
-    <div onClick={onClick} className="next-wrapper">
-      <i className="fa-solid fa-chevron-right next-arrow"></i>
-    </div>
-  );
-}
 
-function SamplePrevArrow(props) {
-  const { onClick } = props;
-  return (
-    <div onClick={onClick} className="prev-wrapper">
-      <i className="fa-solid fa-chevron-left prev-arrow"></i>
-    </div>
-  );
-}
 
-export default function () {
+export default function (props) {
+
+  const {allproducts} = props;
+  
+
   const settings1 = {
     speed: 500,
     infinite: false,
     slidesToShow: 4,
     slidesToScroll: 1,
     initialSlide: 0,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1024,
@@ -220,84 +207,12 @@ export default function () {
                   </div>
                 </div>
               </div>
-              <Slider {...settings1}>
-                <div className="card">
-                  <img
-                    src="./imgs/vyn13-t-h.webp"
-                    className="card-img-top"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      {" "}
-                      <a
-                        href="#"
-                        title="Dây Chuyền Hàn Quốc My Queen Với Đá Nhảy - VYN13"
-                      >
-                        Dây Chuyền Hàn Quốc My Queen Với Đá Nhảy - VYN13
-                      </a>
-                    </h5>
-                    <p className="card-price text-danger">1.200.000đ</p>
-                  </div>
-                </div>
-                <div className="card">
-                  <img
-                    src="./imgs/vyb27-b-new.webp"
-                    className="card-img-top"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      {" "}
-                      <a href="#">Vòng tay cỏ 4 lá - 4 Leaf Clover - VYB27</a>
-                    </h5>
-                    <p className="card-price text-danger">890.000đ</p>
-                  </div>
-                </div>
-                <div className="card">
-                  <img
-                    src="./imgs/vyn40-t-h.webp"
-                    className="card-img-top"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      {" "}
-                      <a href="#">Dây Chuyền Love Heart Đính Charm - VYN40</a>
-                    </h5>
-                    <p className="card-price text-danger">1.200.000đ</p>
-                  </div>
-                </div>
-                <div className="card">
-                  <img
-                    src="./imgs/vyn51-t-b.webp"
-                    className="card-img-top"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      {" "}
-                      <a href="#">Dây Chuyền Date Night - Aphrodite - VYN51</a>
-                    </h5>
-                    <p className="card-price text-danger">1.500.000đ</p>
-                  </div>
-                </div>
-                <div className="card">
-                  <img
-                    src="./imgs/vyb09-t-h.webp"
-                    className="card-img-top"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      <a href="#">
-                        Vòng Tay Tình Yêu Vĩnh Cửu - Infinite Love - VYB09
-                      </a>
-                    </h5>
-                    <p className="card-price text-danger">1.200.000đ</p>
-                  </div>
-                </div>
-              </Slider>
+               {/* sliderBestSeller */}
+               {
+                
+               }
+               <ListProducts allproducts={allproducts} />
+                {/* sliderBestSeller */}
             </div>
           </div>
         </section>
@@ -365,15 +280,15 @@ export default function () {
                   </div>
                 </div>
                 <div className="list-allpro">
-                  <Slider {...settings1}>
-                    <div class="card">
+                  {/* <Slider {...settings1}>
+                    <div className="card">
                       <img
                         src="./imgs/vyn13-t-h.webp"
-                        class="card-img-top"
+                        className="card-img-top"
                         alt="..."
                       />
-                      <div class="card-body">
-                        <h5 class="card-title">
+                      <div className="card-body">
+                        <h5 className="card-title">
                           {" "}
                           <a
                             href="#"
@@ -382,73 +297,73 @@ export default function () {
                             Dây Chuyền Hàn Quốc My Queen Với Đá Nhảy - VYN13
                           </a>
                         </h5>
-                        <p class="card-price text-danger">1.200.000đ</p>
+                        <p className="card-price text-danger">1.200.000đ</p>
                       </div>
                     </div>
-                    <div class="card">
+                    <div className="card">
                       <img
                         src="./imgs/vyb27-b-new.webp"
-                        class="card-img-top"
+                        className="card-img-top"
                         alt="..."
                       />
-                      <div class="card-body">
-                        <h5 class="card-title">
+                      <div className="card-body">
+                        <h5 className="card-title">
                           {" "}
                           <a href="#">
                             Vòng tay cỏ 4 lá - 4 Leaf Clover - VYB27
                           </a>
                         </h5>
-                        <p class="card-price text-danger">890.000đ</p>
+                        <p className="card-price text-danger">890.000đ</p>
                       </div>
                     </div>
-                    <div class="card">
+                    <div className="card">
                       <img
                         src="./imgs/vyn40-t-h.webp"
-                        class="card-img-top"
+                        className="card-img-top"
                         alt="..."
                       />
-                      <div class="card-body">
-                        <h5 class="card-title">
+                      <div className="card-body">
+                        <h5 className="card-title">
                           {" "}
                           <a href="#">
                             Dây Chuyền Love Heart Đính Charm - VYN40
                           </a>
                         </h5>
-                        <p class="card-price text-danger">1.200.000đ</p>
+                        <p className="card-price text-danger">1.200.000đ</p>
                       </div>
                     </div>
-                    <div class="card">
+                    <div className="card">
                       <img
                         src="./imgs/vyn51-t-b.webp"
-                        class="card-img-top"
+                        className="card-img-top"
                         alt="..."
                       />
-                      <div class="card-body">
-                        <h5 class="card-title">
+                      <div className="card-body">
+                        <h5 className="card-title">
                           {" "}
                           <a href="#">
                             Dây Chuyền Date Night - Aphrodite - VYN51
                           </a>
                         </h5>
-                        <p class="card-price text-danger">1.500.000đ</p>
+                        <p className="card-price text-danger">1.500.000đ</p>
                       </div>
                     </div>
-                    <div class="card">
+                    <div className="card">
                       <img
                         src="./imgs/vyb09-t-h.webp"
-                        class="card-img-top"
+                        className="card-img-top"
                         alt="..."
                       />
-                      <div class="card-body">
-                        <h5 class="card-title">
+                      <div className="card-body">
+                        <h5 className="card-title">
                           <a href="#">
                             Vòng Tay Tình Yêu Vĩnh Cửu - Infinite Love - VYB09
                           </a>
                         </h5>
-                        <p class="card-price text-danger">1.200.000đ</p>
+                        <p className="card-price text-danger">1.200.000đ</p>
                       </div>
                     </div>
-                  </Slider>
+                  </Slider> */}
                 </div>
               </div>
             </div>
@@ -473,50 +388,50 @@ export default function () {
               </div>
             </div>
             <div className="row">
-              <Slider {...settings2}>
-                <div class="card">
+              {/* <Slider {...settings2}>
+                <div className="card">
                   <img
                     src="./imgs/img_brand_1.webp"
-                    class="card-img-top"
+                    className="card-img-top"
                     alt="..."
                   />
                 </div>
-                <div class="card">
+                <div className="card">
                   <img
                     src="./imgs/img_brand_2.webp"
-                    class="card-img-top"
+                    className="card-img-top"
                     alt="..."
                   />
                 </div>
-                <div class="card">
+                <div className="card">
                   <img
                     src="./imgs/img_brand_3.webp"
-                    class="card-img-top"
+                    className="card-img-top"
                     alt="..."
                   />
                 </div>
-                <div class="card">
+                <div className="card">
                   <img
                     src="./imgs/img_brand_4.webp"
-                    class="card-img-top"
+                    className="card-img-top"
                     alt="..."
                   />
                 </div>
-                <div class="card">
+                <div className="card">
                   <img
                     src="./imgs/img_brand_5.webp"
-                    class="card-img-top"
+                    className="card-img-top"
                     alt="..."
                   />
                 </div>
-                <div class="card">
+                <div className="card">
                   <img
                     src="./imgs/img_brand_6.webp"
-                    class="card-img-top"
+                    className="card-img-top"
                     alt="..."
                   />
                 </div>
-              </Slider>
+              </Slider> */}
             </div>
           </div>
         </section>
@@ -553,7 +468,7 @@ export default function () {
                         Bật mí Top 3 quà tặng kỷ niệm tình yêu hot nhất 2022
                       </Link>
                     </h3>
-                    <p class="time-post">
+                    <p className="time-post">
                       <span>07/01/2023</span>
                     </p>
                     <p className="card-text">
@@ -575,7 +490,7 @@ export default function () {
                     <h3 className="card-title text-center">
                       <Link>Quà tặng bạn gái 20/10 các anh nên chọn gì?</Link>
                     </h3>
-                    <p class="time-post">
+                    <p className="time-post">
                       <span>07/01/2023</span>
                     </p>
                     <p className="card-text">
@@ -599,7 +514,7 @@ export default function () {
                         Top 7 món quà tặng sinh nhật bạn gái ý nghĩa nhất{" "}
                       </Link>
                     </h3>
-                    <p class="time-post">
+                    <p className="time-post">
                       <span>07/01/2023</span>
                     </p>
                     <p className="card-text">

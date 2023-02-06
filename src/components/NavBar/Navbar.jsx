@@ -1,6 +1,6 @@
 import { NavLink,Link } from "react-router-dom";
-import Homepage from "../pages/HomePage/Homepage";
-import "../style/Navbar.css";
+import Homepage from "../../pages/HomePage/Homepage";
+import "../../style/Navbar.css";
 export default function () {
   return (
    <div className="container">

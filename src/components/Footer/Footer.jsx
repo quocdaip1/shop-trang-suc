@@ -23,13 +23,13 @@ export default function () {
                   <i className="fa-brands fa-facebook-f"></i>
                 </div>
                 <div className="icon-wrapper">
-                  <i class="fa-brands fa-twitter"></i>
+                  <i className="fa-brands fa-twitter"></i>
                 </div>
                 <div className="icon-wrapper">
-                  <i class="fa-brands fa-youtube"></i>
+                  <i className="fa-brands fa-youtube"></i>
                 </div>
                 <div className="icon-wrapper">
-                  <i class="fa-brands fa-instagram"></i>
+                  <i className="fa-brands fa-instagram"></i>
                 </div>
               </div>
             </div>

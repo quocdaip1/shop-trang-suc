@@ -9,7 +9,6 @@ header .slider-wrapper {
   height: auto;
 }
 /* end header */
-
 .card a {
   color: #333;
 }
@@ -101,7 +100,7 @@ main .section_banner .banner-wrapper:hover img{
 .next-wrapper,.prev-wrapper{
   position: absolute;
   z-index: 1;
-  top: 13rem;
+  top: 30%;
   cursor: pointer;
 }
 .next-wrapper{
