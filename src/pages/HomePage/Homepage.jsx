@@ -11,12 +11,13 @@ import Loading from "../../components/Loanding/Loading";
 import SliderProducts from "../../components/Slider/SliderProducts";
 
 export default function (props) {
-  const { allproducts, loading} = props;
+  const { allproducts, loading ,setLoading} = props;
 
   const bestSeller = [...allproducts].sort((a,b) => b.allsell - a.allsell).slice(0,5);
 
   const [productfilter,setProductfilter] = useState([])
   const handlefilterProducts = (event) => {
+    setLoading(true)
     const productName = event.target.getAttribute("name");
     const newlistproduct = [];
 
@@ -27,6 +28,7 @@ export default function (props) {
     })
 
     setProductfilter([...newlistproduct]);
+    setLoading(false);
   }
   
   console.log(productfilter)

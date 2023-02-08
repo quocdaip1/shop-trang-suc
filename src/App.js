@@ -32,7 +32,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/"  element={<Homepage 
-         allproducts={allProducts} loading={loading}  />}/>
+         allproducts={allProducts} loading={loading} setLoading={setLoading}  />}/>
       </Routes>
     </div>
   );
