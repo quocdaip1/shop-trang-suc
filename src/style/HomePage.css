@@ -1,7 +1,5 @@
 /* header */
-.homepage{
-  overflow: hidden;
-}
+
 header {
   height: 100vh;
 }
@@ -97,22 +95,6 @@ main .section_banner .banner-wrapper:hover img{
 
 
 /* main action-product */ 
-.next-wrapper,.prev-wrapper{
-  position: absolute;
-  z-index: 1;
-  top: 30%;
-  cursor: pointer;
-}
-.next-wrapper{
-  right: 2.5rem;
-}
-.prev-wrapper{
-  left: 2.5rem;
-}
-.next-arrow,.prev-arrow{
-  font-size: 3.5rem;
-}
-
 .slick-initialized .slick-slide{
   padding: 0.5rem;
 }
@@ -135,6 +117,9 @@ main .section_banner .banner-wrapper:hover img{
 /* end main action-product */
 
 /* main allpro */
+main{
+  overflow: hidden;
+}
 main .section-allproduct{
   padding: 1.5rem 0 2rem 0;
   border-bottom: 0.1rem solid #ebebeb;

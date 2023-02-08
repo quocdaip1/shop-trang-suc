@@ -3,7 +3,7 @@ import Homepage from "./pages/HomePage/Homepage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap';
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import { config } from "./utils";
 import axios from "axios";
 
@@ -12,12 +12,16 @@ import axios from "axios";
 function App() {
 
   const [allProducts,setAllProducts] = useState([]);
-  const [bestSeller,setBestSeller] = useState([]);
-
+  const [loading,setLoading] = useState(false);
   const fetchApi = async () =>{
-      const postData = await axios.get(`${config.API_URL}/Allproducts`);
-      setAllProducts(postData.data);
-      
+      setLoading(true);
+      try {
+        const postData = await axios.get(`${config.API_URL}/Allproducts`);
+        setAllProducts(postData.data);
+        } catch (error) {
+        console.log("error homepage",error)
+      }
+      setLoading(false)
   }
 
   useEffect(() => {
@@ -27,7 +31,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/"  element={<Homepage allproducts={allProducts} />}/>
+        <Route path="/"  element={<Homepage 
+         allproducts={allProducts} loading={loading}  />}/>
       </Routes>
     </div>
   );

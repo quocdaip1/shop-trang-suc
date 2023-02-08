@@ -7,13 +7,30 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Footer from "../../components/Footer/Footer";
 import ListProducts from "../../components/ListProducts/ListProducts";
-
-
+import Loading from "../../components/Loanding/Loading";
+import SliderProducts from "../../components/Slider/SliderProducts";
 
 export default function (props) {
+  const { allproducts, loading} = props;
 
-  const {allproducts} = props;
+  const bestSeller = [...allproducts].sort((a,b) => b.allsell - a.allsell).slice(0,5);
+
+  const [productfilter,setProductfilter] = useState([])
+  const handlefilterProducts = (event) => {
+    const productName = event.target.getAttribute("name");
+    const newlistproduct = [];
+
+    [...allproducts].filter(function (product) {
+      if(productName == product.category){
+        return newlistproduct.push(product);
+      }
+    })
+
+    setProductfilter([...newlistproduct]);
+  }
   
+  console.log(productfilter)
+
 
   const settings1 = {
     speed: 500,
@@ -51,7 +68,7 @@ export default function (props) {
   const settings2 = {
     speed: 500,
     infinite: true,
-    autoplay:true,
+    autoplay: true,
     slidesToShow: 5,
     slidesToScroll: 1,
     initialSlide: 0,
@@ -207,12 +224,9 @@ export default function (props) {
                   </div>
                 </div>
               </div>
-               {/* sliderBestSeller */}
-               {
-                
-               }
-               <ListProducts allproducts={allproducts} />
-                {/* sliderBestSeller */}
+              {/* sliderBestSeller */}
+              <SliderProducts allproducts={bestSeller} loading={loading} />
+              {/* sliderBestSeller */}
             </div>
           </div>
         </section>
@@ -244,9 +258,9 @@ export default function (props) {
                   <div className="container">
                     <div className="row">
                       <div className="col-4">
-                        <div className="allpro-wrapper d-flex">
+                        <div onClick={handlefilterProducts} className="allpro-wrapper d-flex">
                           <div className="icon-wrapper">
-                            <img src="./imgs/icon_1_allpro.jpg" alt="" />
+                            <img name="eardrop" src="./imgs/icon_1_allpro.jpg" alt="" />
                           </div>
                           <div className="mx-2 p-2">
                             <h4 className="name_allpro">Hoa Tai</h4>
@@ -255,9 +269,9 @@ export default function (props) {
                         </div>
                       </div>
                       <div className="col-4">
-                        <div className="allpro-wrapper d-flex">
+                        <div  onClick={handlefilterProducts} className="allpro-wrapper d-flex">
                           <div className="icon-wrapper">
-                            <img src="./imgs/icon_2_allpro.webp" alt="" />
+                            <img name="bracelet" src="./imgs/icon_2_allpro.webp" alt="" />
                           </div>
                           <div className="mx-2 p-2">
                             <h4 className="name_allpro">Vòng Tay</h4>
@@ -266,9 +280,9 @@ export default function (props) {
                         </div>
                       </div>
                       <div className="col-4">
-                        <div className="allpro-wrapper d-flex">
+                        <div onClick={handlefilterProducts} className="allpro-wrapper d-flex">
                           <div className="icon-wrapper">
-                            <img src="./imgs/icon_3_allpro.webp" alt="" />
+                            <img name="necklace" src="./imgs/icon_3_allpro.webp" alt="" />
                           </div>
                           <div className="mx-2 p-2">
                             <h4 className="name_allpro">Dây Chuyền</h4>
@@ -280,90 +294,8 @@ export default function (props) {
                   </div>
                 </div>
                 <div className="list-allpro">
-                  {/* <Slider {...settings1}>
-                    <div className="card">
-                      <img
-                        src="./imgs/vyn13-t-h.webp"
-                        className="card-img-top"
-                        alt="..."
-                      />
-                      <div className="card-body">
-                        <h5 className="card-title">
-                          {" "}
-                          <a
-                            href="#"
-                            title="Dây Chuyền Hàn Quốc My Queen Với Đá Nhảy - VYN13"
-                          >
-                            Dây Chuyền Hàn Quốc My Queen Với Đá Nhảy - VYN13
-                          </a>
-                        </h5>
-                        <p className="card-price text-danger">1.200.000đ</p>
-                      </div>
-                    </div>
-                    <div className="card">
-                      <img
-                        src="./imgs/vyb27-b-new.webp"
-                        className="card-img-top"
-                        alt="..."
-                      />
-                      <div className="card-body">
-                        <h5 className="card-title">
-                          {" "}
-                          <a href="#">
-                            Vòng tay cỏ 4 lá - 4 Leaf Clover - VYB27
-                          </a>
-                        </h5>
-                        <p className="card-price text-danger">890.000đ</p>
-                      </div>
-                    </div>
-                    <div className="card">
-                      <img
-                        src="./imgs/vyn40-t-h.webp"
-                        className="card-img-top"
-                        alt="..."
-                      />
-                      <div className="card-body">
-                        <h5 className="card-title">
-                          {" "}
-                          <a href="#">
-                            Dây Chuyền Love Heart Đính Charm - VYN40
-                          </a>
-                        </h5>
-                        <p className="card-price text-danger">1.200.000đ</p>
-                      </div>
-                    </div>
-                    <div className="card">
-                      <img
-                        src="./imgs/vyn51-t-b.webp"
-                        className="card-img-top"
-                        alt="..."
-                      />
-                      <div className="card-body">
-                        <h5 className="card-title">
-                          {" "}
-                          <a href="#">
-                            Dây Chuyền Date Night - Aphrodite - VYN51
-                          </a>
-                        </h5>
-                        <p className="card-price text-danger">1.500.000đ</p>
-                      </div>
-                    </div>
-                    <div className="card">
-                      <img
-                        src="./imgs/vyb09-t-h.webp"
-                        className="card-img-top"
-                        alt="..."
-                      />
-                      <div className="card-body">
-                        <h5 className="card-title">
-                          <a href="#">
-                            Vòng Tay Tình Yêu Vĩnh Cửu - Infinite Love - VYB09
-                          </a>
-                        </h5>
-                        <p className="card-price text-danger">1.200.000đ</p>
-                      </div>
-                    </div>
-                  </Slider> */}
+                 {/* filter products */}
+                 <SliderProducts allproducts={productfilter} />
                 </div>
               </div>
             </div>
@@ -529,7 +461,7 @@ export default function (props) {
           </div>
         </section>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
