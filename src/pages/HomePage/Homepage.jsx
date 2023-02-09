@@ -1,21 +1,15 @@
 import Navbar from "../../components/NavBar/Navbar";
 import "../../style/HomePage.css";
-import Slider from "react-slick";
-import { Link } from "react-router-dom";
-import React, { Component, useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Footer from "../../components/Footer/Footer";
-import ListProducts from "../../components/ListProducts/ListProducts";
-import Loading from "../../components/Loanding/Loading";
 import SliderProducts from "../../components/Slider/SliderProducts";
 
 export default function (props) {
-  const { allproducts, loading, setLoading} = props;
+  const {allProducts, loading, setLoading} = props;
 
-  const bestSeller = [...allproducts]
-    .sort((a, b) => b.allsell - a.allsell)
-    .slice(0, 5);
+  const bestSeller = allProducts.sort((a, b) => b.allsell - a.allsell).slice(0, 5);
 
   const [buttonFilter, setButtonFilter] = useState([
     { id: 1, active: true, name: "eardrop", title: "Hoa Tai" },
@@ -27,11 +21,10 @@ export default function (props) {
   useEffect(() => {
     handlefilterProducts(buttonFilter[0].name, buttonFilter[0].id);
   }, []);
-  
   const handlefilterProducts = (name, id) => {
     setLoading(true);
     const newlistproduct = [];
-    [...allproducts].filter(product => product.category === name)
+    allProducts.filter(product => product.category === name)
     .forEach(product => newlistproduct.push(product));
     setProductfilter(newlistproduct);
     setButtonFilter(

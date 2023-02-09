@@ -56,7 +56,7 @@ function SamplePrevArrow(props) {
 }
 
 export default function (props) {
-  const {allproducts, loading} = props;
+  const { allproducts, loading } = props;
 
   return (
     <Slider {...settings}>

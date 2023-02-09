@@ -24,7 +24,5 @@ img {
 p{
   margin-bottom: 0;
 }
-.active{
-  border: 0.3rem solid var(--main--color) !important;
-}
+
 

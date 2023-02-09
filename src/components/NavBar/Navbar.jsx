@@ -35,11 +35,11 @@ export default function () {
                 <span></span>
               </li>
               <li className="nav-item-lv1">
-                <NavLink className="link" end>SHOP</NavLink>
+                <NavLink className="link" >SHOP</NavLink>
                 <span></span>
               </li>
               <li className="nav-item-lv1">
-                <NavLink className="link" end>GIFTS <i className="fa-solid fa-chevron-down"></i>
+                <NavLink className="link" >GIFTS <i className="fa-solid fa-chevron-down"></i>
                 </NavLink>
                 <span></span>
                 <ul className="list-menu-child">
@@ -52,7 +52,7 @@ export default function () {
               </li>
              
               <li className="nav-item-lv1">
-                <NavLink className="link" end>ABOUT US <i className="fa-solid fa-chevron-down"></i></NavLink>
+                <NavLink className="link">ABOUT US <i className="fa-solid fa-chevron-down"></i></NavLink>
                 <span></span>
                 <ul className="list-menu-child">
                   <li className="nav-item-lv2"><Link>Về chúng tôi</Link></li>
@@ -63,7 +63,7 @@ export default function () {
                 </ul>
               </li>
               <li className="nav-item-lv1">
-                <NavLink className="link" end>BLOG</NavLink>
+                <NavLink className="link">BLOG</NavLink>
                 <span></span>
               </li>
             </ul>

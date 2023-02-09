@@ -126,8 +126,11 @@ main .section-allproduct{
 }
 main .section-allproduct .allpro-wrapper:hover .icon-wrapper{
   border: 0.3rem solid var(--main--color);
-
 }
+main .section-allproduct .allpro-wrapper .icon-wrapper.active{
+  border: 0.3rem solid var(--main--color);
+}
+
   main .section-allproduct .icon-wrapper{
     border-radius:50%;
     height: 4.5rem;

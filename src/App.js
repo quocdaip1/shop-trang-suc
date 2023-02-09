@@ -1,39 +1,26 @@
 import { Route, Routes } from "react-router-dom";
 import Homepage from "./pages/HomePage/Homepage";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap";
 import "./App.css";
-import { useEffect, useState,useRef } from "react";
-import { config } from "./utils";
-import axios from "axios";
-
-
+import useFetchData from "./useHook/useFetchData";
 
 function App() {
-
-  const [allProducts,setAllProducts] = useState([]);
-  const [loading,setLoading] = useState(false);
-  const [isactive,setIsActive] = useState(false);
-  const fetchApi = async () =>{
-      setLoading(true);
-      try {
-        const postData = await axios.get(`${config.API_URL}/Allproducts`);
-        setAllProducts(postData.data);
-        } catch (error) {
-        console.log("error homepage",error)
-      }
-      setLoading(false)
-  }
-
-  useEffect(() => {
-    fetchApi();
-  },[])
+  const {allProducts, loading, setLoading } = useFetchData('');
 
   return (
     <div className="App">
       <Routes>
-        <Route path="/"  element={<Homepage 
-         allproducts={allProducts} loading={loading} setLoading={setLoading} isactive={isactive} setIsActive={setIsActive} />}/>
+        <Route
+          path="/"
+          element={
+            <Homepage
+              allProducts={allProducts}
+              loading={loading}
+              setLoading={setLoading}
+            />
+          }
+        />
       </Routes>
     </div>
   );
