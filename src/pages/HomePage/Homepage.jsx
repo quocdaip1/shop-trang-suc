@@ -2,7 +2,7 @@ import Navbar from "../../components/NavBar/Navbar";
 import "../../style/HomePage.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Footer from "../../components/Footer/Footer";
@@ -11,97 +11,43 @@ import Loading from "../../components/Loanding/Loading";
 import SliderProducts from "../../components/Slider/SliderProducts";
 
 export default function (props) {
-  const { allproducts, loading ,setLoading} = props;
+  const { allproducts, loading, setLoading} = props;
 
-  const bestSeller = [...allproducts].sort((a,b) => b.allsell - a.allsell).slice(0,5);
+  const bestSeller = [...allproducts]
+    .sort((a, b) => b.allsell - a.allsell)
+    .slice(0, 5);
 
-  const [productfilter,setProductfilter] = useState([])
-  const handlefilterProducts = (event) => {
-    setLoading(true)
-    const productName = event.target.getAttribute("name");
-    const newlistproduct = [];
+  const [buttonFilter, setButtonFilter] = useState([
+    { id: 1, active: true, name: "eardrop", title: "Hoa Tai" },
+    { id: 2, active: false, name: "bracelet", title: "Vòng tay" },
+    { id: 3, active: false, name: "necklace", title: "Dây chuyền" },
+  ]);
 
-    [...allproducts].filter(function (product) {
-      if(productName == product.category){
-        return newlistproduct.push(product);
-      }
-    })
-
-    setProductfilter([...newlistproduct]);
-    setLoading(false);
-  }
+  const [productfilter,setProductfilter] = useState([]);
+  useEffect(() => {
+    handlefilterProducts(buttonFilter[0].name, buttonFilter[0].id);
+  }, []);
   
-  console.log(productfilter)
-
-
-  const settings1 = {
-    speed: 500,
-    infinite: false,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings1: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings1: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings1: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-  const settings2 = {
-    speed: 500,
-    infinite: true,
-    autoplay: true,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings2: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings2: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings2: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+  const handlefilterProducts = (name, id) => {
+    setLoading(true);
+    const newlistproduct = [];
+    [...allproducts].filter(product => product.category === name)
+    .forEach(product => newlistproduct.push(product));
+    setProductfilter(newlistproduct);
+    setButtonFilter(
+      buttonFilter.map(button => {
+        if (button.id === id) {
+          button.active = true;
+        } else {
+          button.active = false;
+        }
+        return button;
+      })
+    );
+    setLoading(false);
   };
 
+  
   return (
     <div className="homepage">
       <header>
@@ -259,45 +205,43 @@ export default function (props) {
                 <div className="list-icon-allpro mb-5">
                   <div className="container">
                     <div className="row">
-                      <div className="col-4">
-                        <div onClick={handlefilterProducts} className="allpro-wrapper d-flex">
-                          <div className="icon-wrapper">
-                            <img name="eardrop" src="./imgs/icon_1_allpro.jpg" alt="" />
+                      {buttonFilter.map((button) => {
+                        return (
+                          <div key={button.id} className="col-4">
+                            <div
+                              onClick={() =>
+                                handlefilterProducts(button.name, button.id)
+                              }
+                              className="allpro-wrapper d-flex"
+                            >
+                              <div
+                                className={
+                                  button.active
+                                    ? "active icon-wrapper"
+                                    : "icon-wrapper"
+                                }
+                              >
+                                <img src="./imgs/icon_1_allpro.jpg" alt="" />
+                              </div>
+                              <div className="mx-2 p-2">
+                                <h4 className="name_allpro">{button.title}</h4>
+                                <div className="quanlity_product">
+                                  138 sản phẩm
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                          <div className="mx-2 p-2">
-                            <h4 className="name_allpro">Hoa Tai</h4>
-                            <div className="quanlity_product">138 sản phẩm</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-4">
-                        <div  onClick={handlefilterProducts} className="allpro-wrapper d-flex">
-                          <div className="icon-wrapper">
-                            <img name="bracelet" src="./imgs/icon_2_allpro.webp" alt="" />
-                          </div>
-                          <div className="mx-2 p-2">
-                            <h4 className="name_allpro">Vòng Tay</h4>
-                            <div className="quanlity_product">138 sản phẩm</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-4">
-                        <div onClick={handlefilterProducts} className="allpro-wrapper d-flex">
-                          <div className="icon-wrapper">
-                            <img name="necklace" src="./imgs/icon_3_allpro.webp" alt="" />
-                          </div>
-                          <div className="mx-2 p-2">
-                            <h4 className="name_allpro">Dây Chuyền</h4>
-                            <div className="quanlity_product">138 sản phẩm</div>
-                          </div>
-                        </div>
-                      </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
                 <div className="list-allpro">
-                 {/* filter products */}
-                 <SliderProducts allproducts={productfilter} />
+                  {/* filter products */}
+                  <SliderProducts
+                    loading={loading}
+                    allproducts={productfilter}
+                  />
                 </div>
               </div>
             </div>
@@ -386,7 +330,7 @@ export default function (props) {
               </div>
             </div>
             <div className="row">
-              <Slider {...settings1}>
+              {/* <Slider {...settings1}>
                 <div className="card">
                   <div className="img-wrapper">
                     <img
@@ -458,7 +402,7 @@ export default function (props) {
                     </p>
                   </div>
                 </div>
-              </Slider>
+              </Slider> */}
             </div>
           </div>
         </section>

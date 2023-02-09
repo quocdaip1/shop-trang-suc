@@ -1,6 +1,5 @@
 :root{
   --main--color:#4caab1;
-  --black:#333;
 }
 
 * {
@@ -8,10 +7,6 @@
   padding: 0;
   margin: 0;
   
-}
-
-html {
-  font-size: 10px;
 }
 
 html {
@@ -29,3 +24,7 @@ img {
 p{
   margin-bottom: 0;
 }
+.active{
+  border: 0.3rem solid var(--main--color) !important;
+}
+

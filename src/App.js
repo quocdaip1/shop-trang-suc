@@ -13,6 +13,7 @@ function App() {
 
   const [allProducts,setAllProducts] = useState([]);
   const [loading,setLoading] = useState(false);
+  const [isactive,setIsActive] = useState(false);
   const fetchApi = async () =>{
       setLoading(true);
       try {
@@ -32,7 +33,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/"  element={<Homepage 
-         allproducts={allProducts} loading={loading} setLoading={setLoading}  />}/>
+         allproducts={allProducts} loading={loading} setLoading={setLoading} isactive={isactive} setIsActive={setIsActive} />}/>
       </Routes>
     </div>
   );

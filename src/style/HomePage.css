@@ -124,15 +124,16 @@ main .section-allproduct{
   padding: 1.5rem 0 2rem 0;
   border-bottom: 0.1rem solid #ebebeb;
 }
+main .section-allproduct .allpro-wrapper:hover .icon-wrapper{
+  border: 0.3rem solid var(--main--color);
+
+}
   main .section-allproduct .icon-wrapper{
     border-radius:50%;
     height: 4.5rem;
     width: 4.5rem;
     border: 0.3rem solid #ebebeb;
     cursor: pointer;
-  }
-  main .section-allproduct .icon-wrapper:hover{
-    border: 0.3rem solid var(--main--color);
   }
   main .section-allproduct .list-icon-allpro{
     padding-top: 1.4rem;
