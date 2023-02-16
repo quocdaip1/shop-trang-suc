@@ -1,10 +1,11 @@
 import Product from "../product/Product";
 import Slider from "react-slick";
-import React, { Component, useState } from "react";
+import React,{useMemo} from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../style/Slider.css";
 import Loading from "../Loanding/Loading";
+
 const settings = {
   speed: 500,
   infinite: false,
@@ -56,17 +57,17 @@ function SamplePrevArrow(props) {
 }
 
 export default function (props) {
-  const { allproducts, loading } = props;
+  const { allProducts, loading } = props;
+  console.log(allProducts);
 
-  return (
-    <Slider {...settings}>
-      {loading ? (
-        <Loading />
-      ) : (
-        allproducts.map((product) => {
-          return <Product key={product.id} product={product} />;
-        })
-      )}
-    </Slider>
-  );
+  const productElements = useMemo(() => {
+    if (loading) {
+      return <Loading />;
+    }
+    return allProducts && allProducts.map((product) => {
+      return <Product key={product.id} product={product} />;
+    });
+  }, [allProducts, loading]);
+
+  return <Slider {...settings}>{productElements}</Slider>;
 }

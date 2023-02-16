@@ -1,71 +1,77 @@
 import Navbar from "../../components/NavBar/Navbar";
 import "../../style/HomePage.css";
-import React, {useEffect, useState } from "react";
-import {Link} from "react-router-dom"
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Footer from "../../components/Footer/Footer";
 import SliderProducts from "../../components/Slider/SliderProducts";
+import useFetchData from "../../useHook/useFetchData";
 
-export default function (props) {
-  const {allProducts, loading, setLoading} = props;
+export default function () {
+  
 
-  const bestSeller = allProducts.sort((a, b) => b.allsell - a.allsell).slice(0, 5);
+  const {allProducts,loading,setLoading} = useFetchData('');
+  const bestSeller = allProducts.sort((a,b) => b.allsell-a.allsell).slice(0,5);
+  
+  
 
   const [buttonFilter, setButtonFilter] = useState([
-    { id: 1, active: true, name: "eardrop", title: "Hoa Tai" },
-    { id: 2, active: false, name: "bracelet", title: "Vòng tay" },
-    { id: 3, active: false, name: "necklace", title: "Dây chuyền" },
+    {
+      id: 1,
+      active: true,
+      name: "eardrop",
+      title: "Hoa Tai",
+      img: "./imgs/icon_1_allpro.jpg",
+    },
+    {
+      id: 2,
+      active: false,
+      name: "bracelet",
+      title: "Vòng tay",
+      img: "./imgs/icon_2_allpro.webp",
+    },
+    {
+      id: 3,
+      active: false,
+      name: "necklace",
+      title: "Dây chuyền",
+      img: "./imgs/icon_3_allpro.webp",
+    },
   ]);
 
-  const [productfilter,setProductfilter] = useState([]);
   useEffect(() => {
     handlefilterProducts(buttonFilter[0].name, buttonFilter[0].id);
-  }, []);
+  }, [allProducts]);
+  const [productfilter, setProductfilter] = useState([]);
   const handlefilterProducts = (name, id) => {
     setLoading(true);
-    const newlistproduct = [];
-    allProducts.filter(product => product.category === name)
-    .forEach(product => newlistproduct.push(product));
-    setProductfilter(newlistproduct);
-    setButtonFilter(
-      buttonFilter.map(button => {
-        if (button.id === id) {
-          button.active = true;
-        } else {
-          button.active = false;
-        }
-        return button;
-      })
-    );
+    const newlistproducts = allProducts.filter(product => product.category === name);
+
+    setProductfilter(newlistproducts);
+    const newButtonFilter = buttonFilter.map((button) => ({
+      ...button,
+      active: button.id === id,
+    }));
+    setButtonFilter(newButtonFilter);
     setLoading(false);
   };
 
-
-// slider
+  // slider
   function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className="d-none"
-      />
-    );
+    return <div className="d-none" />;
   }
-  
+
   function SamplePrevArrow(props) {
-    return (
-      <div
-        className="d-none"
-      />
-    );
+    return <div className="d-none" />;
   }
-  
+
   const settings = {
     infinite: true,
     slidesToShow: 5,
     slidesToScroll: 1,
-    initialSlide: 0,    
+    initialSlide: 0,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
@@ -75,31 +81,31 @@ export default function (props) {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   const settings2 = {
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    initialSlide: 0,    
+    initialSlide: 0,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
@@ -109,28 +115,27 @@ export default function (props) {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
-  
   return (
     <div className="homepage">
       <header>
@@ -256,7 +261,7 @@ export default function (props) {
                 </div>
               </div>
               {/* sliderBestSeller */}
-              <SliderProducts allproducts={bestSeller} loading={loading} />
+              <SliderProducts allProducts={bestSeller} loading={loading} />
               {/* sliderBestSeller */}
             </div>
           </div>
@@ -304,7 +309,7 @@ export default function (props) {
                                     : "icon-wrapper"
                                 }
                               >
-                                <img src="./imgs/icon_1_allpro.jpg" alt="" />
+                                <img src={button.img} alt="" />
                               </div>
                               <div className="mx-2 p-2">
                                 <h4 className="name_allpro">{button.title}</h4>
@@ -322,8 +327,8 @@ export default function (props) {
                 <div className="list-allpro">
                   {/* filter products */}
                   <SliderProducts
+                    allProducts={productfilter}
                     loading={loading}
-                    allproducts={productfilter}
                   />
                 </div>
               </div>
@@ -414,7 +419,7 @@ export default function (props) {
             </div>
             <div className="row">
               <Slider {...settings2}>
-              <div className="card">
+                <div className="card">
                   <div className="img-wrapper">
                     <img
                       src="./imgs/qua-tang-sinh-nhat-ban-gai.webp"

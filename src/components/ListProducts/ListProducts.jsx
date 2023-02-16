@@ -55,7 +55,7 @@ export default function (props) {
     ],
   };
 
-  const { allproducts,loading } = props;
+  const {allproducts,loading} = props;
   if(loading){
     return (
       <div className="d-flex justify-content-center align-items-center">

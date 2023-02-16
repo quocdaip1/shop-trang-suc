@@ -3,24 +3,14 @@ import Homepage from "./pages/HomePage/Homepage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import "./App.css";
-import useFetchData from "./useHook/useFetchData";
+import SellPage from "./pages/SellPage/SellPage";
 
 function App() {
-  const {allProducts, loading, setLoading } = useFetchData('');
-
   return (
     <div className="App">
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Homepage
-              allProducts={allProducts}
-              loading={loading}
-              setLoading={setLoading}
-            />
-          }
-        />
+        <Route path="/" element={<Homepage />} />
+        <Route path="/SellPage" element={<SellPage />} />
       </Routes>
     </div>
   );
