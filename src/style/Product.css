@@ -1,0 +1,30 @@
+.img-wrapper{
+    position: relative;
+}
+.img-wrapper .box-action{
+    display: none;
+    content: '';
+    width: 100%;
+    position: absolute;
+    background-color: rgba(157,190,206,0.85);
+    top: 0;
+    left: 0;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.img-wrapper .box-action i{
+    font-size: 2.3rem;
+    margin: 0.5rem;
+}
+.img-wrapper .box-action link::after{
+    content: '';
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: black;
+}
+.card:hover .box-action{
+    display: flex;
+}

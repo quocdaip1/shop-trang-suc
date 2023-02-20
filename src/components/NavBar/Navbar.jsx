@@ -1,9 +1,10 @@
 import { NavLink,Link } from "react-router-dom";
-import Homepage from "../../pages/HomePage/Homepage";
 import "../../style/Navbar.css";
 export default function () {
+
+
   return (
-   <div className="container">
+   <div className="container-sm container-md container-lg">
      <div className="navBar d-flex justify-content-between">
       <div className="logo-wrapper ">
         <img src="./imgs/logo.webp" alt="" />
@@ -29,19 +30,26 @@ export default function () {
           <nav>
             <ul className="list-menu d-flex justify-content-space-aroud">
               <li className="nav-item-lv1">
-                <NavLink className="link" href={<Homepage />} end>
+                <NavLink className="link" exact to="/" activeClassName="active" end>
                   MENU
                 </NavLink>
-                <span></span>
+                <span ></span>
               </li>
               <li className="nav-item-lv1">
-                <NavLink className="link" >SHOP</NavLink>
-                <span></span>
+                <NavLink className="link" exact activeClassName="active" >SHOP <i className="fa-solid fa-chevron-down"></i></NavLink>
+                <span ></span>
+                <ul className="list-menu-child">
+                  <li className="nav-item-lv2"><Link>Dây chuyền</Link></li>
+                  <li className="nav-item-lv2"><Link>Vòng tay</Link></li>
+                  <li className="nav-item-lv2"><Link>Hoa tai</Link></li>
+                  <li className="nav-item-lv2"><Link>Nhẫn</Link></li>
+                  <li className="nav-item-lv2"><Link>Bộ trang sức</Link></li>
+                </ul>
               </li>
               <li className="nav-item-lv1">
-                <NavLink className="link" >GIFTS <i className="fa-solid fa-chevron-down"></i>
+                <NavLink className="link" exact activeClassName="active" >GIFTS <i className="fa-solid fa-chevron-down"></i>
                 </NavLink>
-                <span></span>
+                <span ></span>
                 <ul className="list-menu-child">
                   <li className="nav-item-lv2"><Link>Quà tặng năm mới</Link></li>
                   <li className="nav-item-lv2"><Link>Quà tặng Valantine</Link></li>
@@ -52,8 +60,8 @@ export default function () {
               </li>
              
               <li className="nav-item-lv1">
-                <NavLink className="link">ABOUT US <i className="fa-solid fa-chevron-down"></i></NavLink>
-                <span></span>
+                <NavLink className="link" exact activeClassName="active">ABOUT US <i className="fa-solid fa-chevron-down"></i></NavLink>
+                <span ></span>
                 <ul className="list-menu-child">
                   <li className="nav-item-lv2"><Link>Về chúng tôi</Link></li>
                   <li className="nav-item-lv2"><Link>Chính sách
@@ -63,7 +71,7 @@ export default function () {
                 </ul>
               </li>
               <li className="nav-item-lv1">
-                <NavLink className="link">BLOG</NavLink>
+                <NavLink className="link" exact activeClassName="active">BLOG</NavLink>
                 <span></span>
               </li>
             </ul>

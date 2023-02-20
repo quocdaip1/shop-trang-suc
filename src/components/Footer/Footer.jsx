@@ -74,7 +74,7 @@ export default function () {
              HỖ TRỢ
             </h2>
             <ul className="list-content">
-              <li><Link>Điều khoản sử dụng dịch vụ</Link></li>
+              <li><Link>Điều khoản dịch vụ</Link></li>
               <li><Link>Hướng dẫn mua hàng</Link></li>
               <li><Link>Hướng dẫn thanh toán</Link></li>
             </ul>

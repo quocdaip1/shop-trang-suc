@@ -64,7 +64,7 @@
   left: 0;
   position: absolute;
   background-color: white;
-  width: 130%;
+  width: 150%;
   transform: translateY(20%);
   visibility: hidden;
   padding: 0;
@@ -111,7 +111,15 @@
     animation-name: borderLine;
     animation-duration: 0.5s;
 }
-
+.actitve{
+  bottom: 0;
+  left: 0;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 0.2rem;
+  background: #4caab1;
+}
 @keyframes borderLine {
     0% {
         transform: scaleX(0);
