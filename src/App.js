@@ -9,8 +9,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/SellPage" element={<SellPage />} />
+        <Route exact strict path="/" element={<Homepage />} />
+        <Route exact strict path="/SellPage" element={<SellPage />} />
       </Routes>
     </div>
   );

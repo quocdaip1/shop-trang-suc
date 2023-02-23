@@ -25,6 +25,9 @@
     border: none;
     background-color: black;
 }
+.card{
+    transition: 100s;
+}
 .card:hover .box-action{
     display: flex;
 }

@@ -10,12 +10,10 @@ import SliderProducts from "../../components/Slider/SliderProducts";
 import useFetchData from "../../useHook/useFetchData";
 
 export default function () {
-  
-
-  const {allProducts,loading,setLoading} = useFetchData('');
-  const bestSeller = allProducts.sort((a,b) => b.allsell-a.allsell).slice(0,5);
-  
-  
+  const { allProducts, loading, setLoading } = useFetchData("");
+  const bestSeller = allProducts
+    .sort((a, b) => b.allsell - a.allsell)
+    .slice(0, 5);
 
   const [buttonFilter, setButtonFilter] = useState([
     {
@@ -47,7 +45,9 @@ export default function () {
   const [productfilter, setProductfilter] = useState([]);
   const handlefilterProducts = (name, id) => {
     setLoading(true);
-    const newlistproducts = allProducts.filter(product => product.category === name);
+    const newlistproducts = allProducts.filter(
+      (product) => product.category === name
+    );
 
     setProductfilter(newlistproducts);
     const newButtonFilter = buttonFilter.map((button) => ({
@@ -291,38 +291,36 @@ export default function () {
               </div>
               <div className="col-9">
                 <div className="list-icon-allpro mb-5">
-                  <div className="container">
-                    <div className="row">
-                      {buttonFilter.map((button) => {
-                        return (
-                          <div key={button.id} className="col-4">
+                  <div className="row">
+                    {buttonFilter.map((button) => {
+                      return (
+                        <div key={button.id} className="col-4">
+                          <div
+                            onClick={() =>
+                              handlefilterProducts(button.name, button.id)
+                            }
+                            className="allpro-wrapper d-flex"
+                          >
                             <div
-                              onClick={() =>
-                                handlefilterProducts(button.name, button.id)
+                              className={
+                                button.active
+                                  ? "active icon-wrapper"
+                                  : "icon-wrapper"
                               }
-                              className="allpro-wrapper d-flex"
                             >
-                              <div
-                                className={
-                                  button.active
-                                    ? "active icon-wrapper"
-                                    : "icon-wrapper"
-                                }
-                              >
-                                <img src={button.img} alt="" />
-                              </div>
-                              <div className="mx-2 p-2">
-                                <h4 className="name_allpro">{button.title}</h4>
-                                <div className="quanlity_product">
-                                  138 sản phẩm
-                                </div>
+                              <img src={button.img} alt="" />
+                            </div>
+                            <div className="mx-2 p-2">
+                              <h4 className="name_allpro">{button.title}</h4>
+                              <div className="quanlity_product">
+                                138 sản phẩm
                               </div>
                             </div>
                           </div>
-                        );
-                      })}
-                    </div>
-                  </div>
+                        </div>
+                      );
+                    })}
+                  </div>{" "}
                 </div>
                 <div className="list-allpro">
                   {/* filter products */}

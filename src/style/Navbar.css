@@ -18,8 +18,8 @@
 .navBar .nav-midder .hotline-wrapper h4 {
   margin: auto 0;
 }
-.navBar .nav-midder .hotline-wrapper h4 a{
-    color: #4caab1;
+.navBar .nav-midder .hotline-wrapper h4 a {
+  color: #4caab1;
 }
 .navBar .nav-midder .input-search {
   width: 35rem;
@@ -31,17 +31,17 @@
   font-size: 1.3rem;
   outline: none;
 }
-.navBar .nav-midder .search-wrapper{
-    position: relative;
+.navBar .nav-midder .search-wrapper {
+  position: relative;
 }
-.navBar .nav-midder .search-wrapper i{
-    color: #333;
-    position: absolute;
-    font-size: 2rem;
-    right: 5px;
-    top: 4px;
-    cursor: pointer;
-} 
+.navBar .nav-midder .search-wrapper i {
+  color: #333;
+  position: absolute;
+  font-size: 2rem;
+  right: 5px;
+  top: 4px;
+  cursor: pointer;
+}
 
 .navBar .nav-midder .up {
   border-bottom: 0.1rem solid #ebebeb;
@@ -59,8 +59,8 @@
   cursor: pointer;
   position: relative;
 }
-.nav-midder .down nav .list-menu .nav-item-lv1 .list-menu-child{
-  top:100%;
+.nav-midder .down nav .list-menu .nav-item-lv1 .list-menu-child {
+  top: 100%;
   left: 0;
   position: absolute;
   background-color: white;
@@ -69,23 +69,69 @@
   visibility: hidden;
   padding: 0;
 }
-.nav-midder .down nav .list-menu .nav-item-lv1:hover .list-menu-child{
+.nav-midder .down nav .list-menu .nav-item-lv1:hover .list-menu-child
+{
   transform: translateY(0);
   transition-duration: 0.3s;
-  visibility:visible;
+  visibility: visible;
 }
-.nav-midder .down nav .list-menu .nav-item-lv1 .list-menu-child li {
-  padding-left:1rem;
+.nav-midder .down nav .nav-item-lv2,
+.nav-midder .down nav .nav-item-lv3 {
   width: 100%;
   min-height: 4rem;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem 0 1rem;
+  position: relative;
+}
+.nav-midder .nav-item-lv2 .list-menu-child-2 {
+  display: flex;
   flex-direction: column;
   justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: white;
+  width: 100%;
+  transform: translate(100%,0);
+  visibility: hidden;
+  padding: 0;
 }
-.nav-midder .down nav .list-menu .nav-item-lv1:hover .link , .nav-midder .down nav .list-menu .nav-item-lv1 .nav-item-lv2:hover a {
+.nav-midder
+  .down
+  nav
+  .list-menu
+  .nav-item-lv1
+  .nav-item-lv2:hover
+  .list-menu-child-2 {
+  visibility: visible;
+  transition-duration: 0.3s;
+}
+.nav-midder .down nav .list-menu .nav-item-lv1:hover .link,
+.nav-midder .down nav .list-menu .nav-item-lv1 .nav-item-lv2:hover .link-lv2,
+.nav-midder
+  .down
+  nav
+  .list-menu
+  .nav-item-lv1
+  .list-menu-child
+  .nav-item-lv2
+  .list-menu-child-2
+  .nav-item-lv3:hover
+  .link-lv3 {
   color: #4caab1;
 }
-.nav-midder .down nav .list-menu .nav-item-lv1 .nav-item-lv2:hover{
+.nav-midder .down nav .list-menu .nav-item-lv1 .nav-item-lv2:hover,
+.nav-midder
+  .down
+  nav
+  .list-menu
+  .nav-item-lv1
+  .list-menu-child
+  .nav-item-lv2
+  .list-menu-child-2
+  .nav-item-lv3:hover {
   background-color: whitesmoke;
 }
 .nav-midder .down nav .list-menu .nav-item-lv1 a {
@@ -93,44 +139,45 @@
   color: #333;
   font-weight: 500;
 }
-.nav-midder .down nav .list-menu .nav-item-lv1 a i{
+.nav-midder .fa-chevron-down,
+.nav-midder .fa-chevron-right {
   font-size: 1rem;
-  transition: 0.5s;
+  transition: transform 0.3s ease-in-out;
+  margin-left: 0.3rem;
 }
-.nav-midder .down nav .list-menu .nav-item-lv1:hover i{
+.nav-midder .nav-item-lv1:hover .fa-chevron-down,
+.nav-midder .nav-item-lv2:hover .fa-chevron-right {
   transform: rotate(180deg);
 }
-.nav-midder .down nav .list-menu .nav-item-lv1:hover span{
-    bottom: 0;
-    left: 0;
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 0.2rem;
-    background: #4caab1;
-    animation-name: borderLine;
-    animation-duration: 0.5s;
-}
-.actitve{
+.nav-midder .down nav .list-menu .nav-item-lv1:hover::after {
   bottom: 0;
   left: 0;
-  content: '';
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.2rem;
+  background: #4caab1;
+  animation-name: borderLine;
+  animation-duration: 0.5s;
+}
+.borderline {
+  bottom: 0;
+  left: 0;
+  content: "";
   position: absolute;
   width: 100%;
   height: 0.2rem;
   background: #4caab1;
 }
+
 @keyframes borderLine {
-    0% {
-        transform: scaleX(0);
-    }
-    100%{
-        transform: scaleX(1);
-    }
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
 }
-
-
-
 
 /* end middle */
 /* left */
