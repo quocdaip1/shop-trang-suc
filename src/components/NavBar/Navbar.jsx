@@ -1,27 +1,44 @@
-import { NavLink, Link } from "react-router-dom";
-import { useRef } from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../style/Navbar.css";
 export default function () {
-  const spanRef = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const isActive = () => {
-    console.log("ss");
+  const navigateToPageAllProduct = (event) => {
+    event.preventDefault();
+    navigate("/collection/all");
   };
+
+  const navigateToPageProduct = (event) => {
+    event.stopPropagation();
+    const nameProduct = event.currentTarget.dataset.name;
+    navigate(`/${nameProduct}`);
+  };
+
   return (
-    <div className="container">
+    <div className="container-fuild container-lg">
       <div className="navBar d-flex justify-content-between">
+        <div className="nav-responsive d-lg-none">
+          <div className="icon-wrapper">
+            <i className="fa-solid fa-bars"></i>
+          </div>
+          <div className="icon-wrapper">
+            <i className="fa-solid fa-magnifying-glass"></i>{" "}
+          </div>
+        </div>
         <div className="logo-wrapper ">
           <img src="./imgs/logo.webp" alt="" />
         </div>
         <div className="nav-midder">
-          <div className="up d-flex justify-content-between">
-            <div className="hotline-wrapper d-flex justify-content-center">
-              <h4>
+          <div className="up">
+            <div className="hotline-wrapper">
+              <h4 className="hotline">
                 <i className="fa-solid fa-phone"></i>HOTLINE:
                 <a href="#">081 612 9868</a>
               </h4>
             </div>
-            <div className="search-wrapper d-flex justify-content-center">
+            <div className="search-wrapper">
               <input
                 className="input-search"
                 type="text"
@@ -33,31 +50,57 @@ export default function () {
           <div className="down">
             <nav>
               <ul className="list-menu d-flex justify-content-space-aroud">
-                <li className="nav-item-lv1" onClick={isActive}>
+                <li className="nav-item-lv1">
                   <NavLink className="link" to="/">
                     MENU
                   </NavLink>
                 </li>
-                <li className="nav-item-lv1" onClick={isActive}>
-                  <NavLink className="link" to="/SellPage">
+                <li className="nav-item-lv1" onClick={navigateToPageAllProduct}>
+                  <NavLink className="link" to="/collection">
                     SHOP
                   </NavLink>
                   <i className="fa-solid fa-chevron-down"></i>
                   <ul className="list-menu-child">
-                    <li className="nav-item-lv2">
-                      <Link>Dây chuyền</Link>
+                    <li
+                      className="nav-item-lv2"
+                      data-name="dây-chuyền"
+                      onClick={navigateToPageProduct}
+                    >
+                      <Link className="link-lv2@media only screen and (max-width: 600px)">
+                        Dây chuyền
+                      </Link>
+                    </li>
+                    <li
+                      className="nav-item-lv2"
+                      data-name="Vòng-tay"
+                      onClick={navigateToPageProduct}
+                    >
+                      <Link className="link-lv2" name="day_chuyen">
+                        Vòng tay
+                      </Link>
+                    </li>
+                    <li
+                      className="nav-item-lv2"
+                      data-name="Hoa-tai"
+                      onClick={navigateToPageProduct}
+                    >
+                      <Link className="link-lv2" name="day_chuyen">
+                        Hoa tai
+                      </Link>
+                    </li>
+                    <li
+                      className="nav-item-lv2"
+                      data-name="Nhẫn"
+                      onClick={navigateToPageProduct}
+                    >
+                      <Link className="link-lv2" name="day_chuyen">
+                        Nhẫn
+                      </Link>
                     </li>
                     <li className="nav-item-lv2">
-                      <Link>Vòng tay</Link>
-                    </li>
-                    <li className="nav-item-lv2">
-                      <Link>Hoa tai</Link>
-                    </li>
-                    <li className="nav-item-lv2">
-                      <Link>Nhẫn</Link>
-                    </li>
-                    <li className="nav-item-lv2">
-                      <Link>Bộ trang sức</Link>
+                      <Link className="link-lv2" name="day_chuyen">
+                        Bộ trang sức
+                      </Link>
                     </li>
                   </ul>
                 </li>
@@ -136,7 +179,7 @@ export default function () {
           </div>
         </div>
         <div className="acction-account">
-          <ul className="list-acction-account d-flex">
+          <ul className="list-acction-account">
             <li>
               <div className="icon-wrapper">
                 <a href="#">

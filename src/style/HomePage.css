@@ -33,7 +33,7 @@ main section {
 
 main .section_service .box {
   display: flex;
-  min-height: 6rem;
+  min-height: 6.5rem;
   width: auto;
   background-color: white;
   border-radius: 1rem;
@@ -79,6 +79,7 @@ main .section_banner .banner-wrapper{
   max-width: 30rem;
   max-height: 40rem;
   overflow: hidden;
+  margin-bottom: 1rem;
 }
 main .section_banner .banner-wrapper img{
   transform: scale(1.1);
@@ -115,7 +116,9 @@ main .section_banner .banner-wrapper:hover img{
   font-size: 1.5rem;
 }
 /* end main action-product */
-
+main .section_service .box{
+  margin-bottom: 1rem;
+}
 /* main allpro */
 main .section-allproduct{
   padding: 1.5rem 0 2rem 0;
@@ -241,4 +244,13 @@ main .section-allproduct .allpro-wrapper .icon-wrapper.active{
     100%{
       left: 100%;
     }
+}
+
+
+@media only screen and (max-width: 992px) {
+  .section_service .box{
+    display: flex;
+    flex-direction: column;
+    
+  }
 }

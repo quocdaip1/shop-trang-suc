@@ -15,6 +15,16 @@ export default function () {
     .sort((a, b) => b.allsell - a.allsell)
     .slice(0, 5);
 
+  const showquanlityProduct = (name) => {
+    let count = 0;
+    allProducts.forEach((product) => {
+      if (product.category === name) {
+        count++;
+      }
+    });
+    return count;
+  };
+
   const [buttonFilter, setButtonFilter] = useState([
     {
       id: 1,
@@ -22,6 +32,7 @@ export default function () {
       name: "eardrop",
       title: "Hoa Tai",
       img: "./imgs/icon_1_allpro.jpg",
+      quanlity: showquanlityProduct("eardrop"),
     },
     {
       id: 2,
@@ -29,6 +40,7 @@ export default function () {
       name: "bracelet",
       title: "Vòng tay",
       img: "./imgs/icon_2_allpro.webp",
+      quanlity: showquanlityProduct("bracelet"),
     },
     {
       id: 3,
@@ -36,11 +48,17 @@ export default function () {
       name: "necklace",
       title: "Dây chuyền",
       img: "./imgs/icon_3_allpro.webp",
+      quanlity: showquanlityProduct("necklace"),
     },
   ]);
 
   useEffect(() => {
-    handlefilterProducts(buttonFilter[0].name, buttonFilter[0].id);
+    handlefilterProducts(buttonFilter[2].name,buttonFilter[0].id);
+    const newButtonFilter = buttonFilter.map((button) => ({
+      ...button,
+      quanlity: showquanlityProduct(button.name),
+    }));
+      setButtonFilter(newButtonFilter);
   }, [allProducts]);
   const [productfilter, setProductfilter] = useState([]);
   const handlefilterProducts = (name, id) => {
@@ -48,7 +66,6 @@ export default function () {
     const newlistproducts = allProducts.filter(
       (product) => product.category === name
     );
-
     setProductfilter(newlistproducts);
     const newButtonFilter = buttonFilter.map((button) => ({
       ...button,
@@ -57,6 +74,7 @@ export default function () {
     setButtonFilter(newButtonFilter);
     setLoading(false);
   };
+
 
   // slider
   function SampleNextArrow(props) {
@@ -138,17 +156,15 @@ export default function () {
 
   return (
     <div className="homepage">
-      <header>
-        <Navbar />
-        <div className="slider-wrapper">
-          <img src="./imgs/slider_1.webp" alt="" />
-        </div>
-      </header>
+      <Navbar />
+      <div className="slider-wrapper">
+        <img src="./imgs/slider_1.webp" alt="" />
+      </div>
       <main>
         <section className="section_service">
           <div className="container">
             <div className="row">
-              <div className="col-3">
+              <div className="col-6 col-lg-3">
                 <div className="box">
                   <div className="icon-box">
                     <i className="fa-solid fa-truck-pickup"></i>
@@ -163,7 +179,7 @@ export default function () {
                   </div>
                 </div>
               </div>
-              <div className="col-3">
+              <div className="col-6 col-lg-3">
                 <div className="box">
                   <div className="icon-box">
                     <i className="fa-solid fa-box"></i>
@@ -178,7 +194,7 @@ export default function () {
                   </div>
                 </div>
               </div>
-              <div className="col-3">
+              <div className="col-6 col-lg-3">
                 <div className="box">
                   <div className="icon-box">
                     <i className="fa-regular fa-credit-card"></i>
@@ -193,7 +209,7 @@ export default function () {
                   </div>
                 </div>
               </div>
-              <div className="col-3">
+              <div className="col-6 col-lg-3">
                 <div className="box">
                   <div className="icon-box">
                     <i className="fa-solid fa-gift"></i>
@@ -222,22 +238,22 @@ export default function () {
                   </div>
                 </div>
               </div>
-              <div className="col-3">
+              <div className="col-6 col-lg-3">
                 <div className="banner-wrapper">
                   <img src="./imgs/img_banner_1.webp" alt="" />
                 </div>
               </div>
-              <div className="col-3">
+              <div className="col-6 col-lg-3">
                 <div className="banner-wrapper">
                   <img src="./imgs/img_banner_2.webp" alt="" />
                 </div>
               </div>
-              <div className="col-3">
+              <div className="col-6 col-lg-3">
                 <div className="banner-wrapper">
                   <img src="./imgs/img_banner_3.webp" alt="img_banner1" />
                 </div>
               </div>
-              <div className="col-3">
+              <div className="col-6 col-lg-3">
                 <div className="banner-wrapper">
                   <img src="./imgs/img_banner_4.webp" alt="" />
                 </div>
@@ -313,7 +329,7 @@ export default function () {
                             <div className="mx-2 p-2">
                               <h4 className="name_allpro">{button.title}</h4>
                               <div className="quanlity_product">
-                                138 sản phẩm
+                                {button.quanlity} sản phẩm
                               </div>
                             </div>
                           </div>
@@ -332,13 +348,13 @@ export default function () {
               </div>
             </div>
             <div className="row">
-              <div className="col-4">
+              <div className="col-12 col-lg-4 mb-3">
                 <img src="./imgs/img_3banner_1.webp" alt="" />
               </div>
-              <div className="col-4">
+              <div className="col-12 col-lg-4 mb-3">
                 <img src="./imgs/img_3banner_2.webp" alt="" />
               </div>
-              <div className="col-4">
+              <div className="col-12 col-lg-4 mb-3">
                 <img src="./imgs/img_3banner_3.webp" alt="" />
               </div>
             </div>

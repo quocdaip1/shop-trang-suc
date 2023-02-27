@@ -1,7 +1,18 @@
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/NavBar/Navbar";
+import { useLocation } from 'react-router-dom';
+import useFetchData from "../../useHook/useFetchData";
+import { useEffect } from "react";
+import { useParams } from 'react-router-dom';
+
+
 
 export default function (){
+    const { nameProduct } = useParams();
+    let newNameProduct = nameProduct && nameProduct.replace('-',' ');    
+    const {allProducts} = useFetchData(newNameProduct);
+
+    console.log(allProducts)
 
     return (
        <div className="sellpage">
