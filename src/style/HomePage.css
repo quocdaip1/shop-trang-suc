@@ -251,6 +251,8 @@ main .section-allproduct .allpro-wrapper .icon-wrapper.active{
   .section_service .box{
     display: flex;
     flex-direction: column;
-    
+  }
+  .section-allproduct .col-3 .img-wrapper{
+    display: none;
   }
 }

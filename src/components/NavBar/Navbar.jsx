@@ -17,7 +17,7 @@ export default function () {
   };
 
   return (
-    <div className="container-fuild container-lg">
+    <div className="container-fluid container-xxl">
       <div className="navBar d-flex justify-content-between">
         <div className="nav-responsive d-lg-none">
           <div className="icon-wrapper">

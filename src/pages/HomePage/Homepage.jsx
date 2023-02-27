@@ -1,6 +1,6 @@
 import Navbar from "../../components/NavBar/Navbar";
 import "../../style/HomePage.css";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -11,19 +11,22 @@ import useFetchData from "../../useHook/useFetchData";
 
 export default function () {
   const { allProducts, loading, setLoading } = useFetchData("");
-  const bestSeller = allProducts
-    .sort((a, b) => b.allsell - a.allsell)
-    .slice(0, 5);
+  const bestSeller = useMemo(() => {
+    return allProducts.sort((a, b) => b.allsell - a.allsell).slice(0, 5);
+  }, [allProducts]);
 
-  const showquanlityProduct = (name) => {
-    let count = 0;
-    allProducts.forEach((product) => {
-      if (product.category === name) {
-        count++;
-      }
-    });
-    return count;
-  };
+  const showQuantityProduct = useCallback(
+    (category) => {
+      let count = 0;
+      allProducts.forEach((product) => {
+        if (product.category === category) {
+          count++;
+        }
+      });
+      return count;
+    },
+    [allProducts]
+  );
 
   const [buttonFilter, setButtonFilter] = useState([
     {
@@ -32,7 +35,7 @@ export default function () {
       name: "eardrop",
       title: "Hoa Tai",
       img: "./imgs/icon_1_allpro.jpg",
-      quanlity: showquanlityProduct("eardrop"),
+      quanlity: showQuantityProduct("eardrop"),
     },
     {
       id: 2,
@@ -40,7 +43,7 @@ export default function () {
       name: "bracelet",
       title: "Vòng tay",
       img: "./imgs/icon_2_allpro.webp",
-      quanlity: showquanlityProduct("bracelet"),
+      quanlity: showQuantityProduct("bracelet"),
     },
     {
       id: 3,
@@ -48,33 +51,35 @@ export default function () {
       name: "necklace",
       title: "Dây chuyền",
       img: "./imgs/icon_3_allpro.webp",
-      quanlity: showquanlityProduct("necklace"),
+      quanlity: showQuantityProduct("necklace"),
     },
   ]);
 
   useEffect(() => {
-    handlefilterProducts(buttonFilter[2].name,buttonFilter[0].id);
+    handlefilterProducts(buttonFilter[2].name, buttonFilter[0].id);
     const newButtonFilter = buttonFilter.map((button) => ({
       ...button,
-      quanlity: showquanlityProduct(button.name),
-    }));
-      setButtonFilter(newButtonFilter);
-  }, [allProducts]);
-  const [productfilter, setProductfilter] = useState([]);
-  const handlefilterProducts = (name, id) => {
-    setLoading(true);
-    const newlistproducts = allProducts.filter(
-      (product) => product.category === name
-    );
-    setProductfilter(newlistproducts);
-    const newButtonFilter = buttonFilter.map((button) => ({
-      ...button,
-      active: button.id === id,
+      quanlity: showQuantityProduct(button.name),
     }));
     setButtonFilter(newButtonFilter);
-    setLoading(false);
-  };
-
+  }, [allProducts]);
+  const [productfilter, setProductfilter] = useState([]);
+  const handlefilterProducts = useCallback(
+    (category, id) => {
+      setLoading(true);
+      const newlistproducts = allProducts.filter(
+        (product) => product.category === category
+      );
+      setProductfilter(newlistproducts);
+      const newButtonFilter = buttonFilter.map((button) => ({
+        ...button,
+        active: button.id === id,
+      }));
+      setButtonFilter(newButtonFilter);
+      setLoading(false);
+    },
+    [allProducts, buttonFilter]
+  );
 
   // slider
   function SampleNextArrow(props) {
@@ -305,12 +310,12 @@ export default function () {
                   <img src="./imgs/img_banner_tab.webp" alt="" />
                 </div>
               </div>
-              <div className="col-9">
+              <div className="col-12 col-lg-9">
                 <div className="list-icon-allpro mb-5">
                   <div className="row">
                     {buttonFilter.map((button) => {
                       return (
-                        <div key={button.id} className="col-4">
+                        <div key={button.id} className="col-6 col-lg-4 mb-3">
                           <div
                             onClick={() =>
                               handlefilterProducts(button.name, button.id)

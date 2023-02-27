@@ -21,7 +21,6 @@ const settings = {
         slidesToShow: 3,
         slidesToScroll: 3,
         infinite: true,
-        dots: true,
       },
     },
     {
@@ -29,13 +28,12 @@ const settings = {
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
-        initialSlide: 2,
       },
     },
     {
       breakpoint: 480,
       settings: {
-        slidesToShow: 1,
+        slidesToShow: 2,
         slidesToScroll: 1,
       },
     },
@@ -58,7 +56,6 @@ function SamplePrevArrow(props) {
 
 export default function (props) {
   const { allProducts, loading } = props;
-  console.log(allProducts);
 
   const productElements = useMemo(() => {
     if (loading) {
