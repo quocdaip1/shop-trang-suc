@@ -28,6 +28,7 @@ const settings = {
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
+        initialSlide: 2
       },
     },
     {
