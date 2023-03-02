@@ -9,7 +9,7 @@ export default function (props) {
 
   return (
     <div className="card">
-      <div className="img-wrapper">
+      <div className="img-card-wrapper">
         <img src={product.img} className="card-img-top" alt="sản phẩm" />
         <div className="box-action">
           <Link className="link">

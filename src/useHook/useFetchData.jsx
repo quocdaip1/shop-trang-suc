@@ -6,12 +6,13 @@ export default function (keyParams) {
   const fetchApi = async () => {
     try {
       setLoading(true);
-      const queryParams = {
-        search: keyParams,
-      };
-      const response = await myAxios.get("Allproducts",{
-        params:queryParams,
-      })
+      // const queryParams = {
+      //   search: keyParams,
+      // };
+      // const response = await myAxios.get("Allproducts",{
+      //   params:queryParams,
+      // })
+      const response = await myAxios.get(`Allproducts?search=${keyParams}`);
       setAllProducts(response.data);
       setLoading(false);
     } catch (error) {
@@ -22,7 +23,7 @@ export default function (keyParams) {
 
   useEffect(() => {
     fetchApi();
-  }, []);
+  }, [keyParams]);
 
   return {allProducts, loading, setLoading};
 }

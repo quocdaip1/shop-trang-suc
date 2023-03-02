@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route exact strict path="/" element={<Homepage />} />
-        <Route path="/collection/all" element={<SellPage />} />
+        <Route exact path="/collection/all" element={<SellPage />} />
         <Route exact path="/:nameProduct" element={<SellPage />} />
       </Routes>
     </div>

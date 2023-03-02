@@ -6,8 +6,9 @@
   margin: auto 0;
   z-index: 1111;
 }
-.navBar .nav-responsive .button-menu i {
-  font-size: 2.5rem;
+.navBar .nav-responsive .button-menu-mobile i,
+.navBar .nav-responsive .button-search-mobile i {
+  font-size: 2rem;
   margin: 0.6rem;
 }
 .navBar .logo-wrapper,
@@ -35,12 +36,7 @@
 }
 
 /* navbar-mobile */
-.navBar .list-menu-mobile a{
-  color: #333;
-  font-size: 1.5rem;
-  font-family: bold;
-}
-.navBar .list-menu-mobile {
+.navBar .list-menu-mobile{
   display: none;
   height: 100vh;
   width: 80%;
@@ -50,20 +46,30 @@
   padding-left: 0;
   position: fixed;
 }
-.navBar .list-menu-mobile  li{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.navBar .list-menu-mobile a {
+  color: #333;
+  font-size: 1.5rem;
+  font-family: bold;
+  width: 100%;
+  height: 100%;
 }
-.navBar .list-menu-mobile .nav-item-lv1{
+.navBar .list-menu-mobile li {
+  position: relative;
+}
+.navBar .list-menu-mobile i {
+  position: absolute;
+  top: 0.5rem;
+  right: 0;
+}
+.navBar .list-menu-mobile .nav-item-lv1 {
   margin-left: 1rem;
-  margin:2rem 1rem 0 1rem;
+  margin: 2rem 1rem 0 1rem;
 }
-.navBar .list-menu-mobile .list-menu-child{
+.navBar .list-menu-mobile .list-menu-child,
+.navBar .list-menu-mobile .list-menu-child .list-menu-child-2 {
   display: none;
 }
-
-.box-title{
+.box-title {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,7 +83,6 @@
 /* navbar-mobile end */
 .navBar .nav-midder .hotline-wrapper h4 a {
   color: #4caab1;
-
 }
 .navBar .nav-midder .hotline-wrapper {
   margin: auto 0;
@@ -147,6 +152,11 @@
   justify-content: space-between;
   padding: 0 1rem 0 1rem;
   position: relative;
+}
+.nav-midder .down nav .nav-item-lv2 .link-lv2,
+.nav-midder .down nav .nav-item-lv3 .link-lv3 {
+  width: 100%;
+  height: 100%;
 }
 .nav-midder .nav-item-lv2 .list-menu-child-2 {
   display: flex;
@@ -294,27 +304,22 @@
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
   }
+  .navBar .logo-wrapper{
+    width: 18rem;
+  }
   .navBar .nav-midder {
     display: none;
   }
   .navBar .nav-responsive {
     display: flex;
   }
-  .navBar .list-menu-mobile{
-    display: block;
-  }
 
   /* acction-account */
-  .acction-account .list-acction-account {
-    
-  }
-
-
   .acction-account .icon-wrapper {
     border: none;
     margin: 0;
   }
-  .acction-account .icon-wrapper a{
+  .acction-account .icon-wrapper a {
     font-size: 1.7rem;
   }
 
