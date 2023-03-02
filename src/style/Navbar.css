@@ -316,6 +316,10 @@
 
   /* acction-account */
   .acction-account .icon-wrapper {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .acction-account .icon-wrapper {
     border: none;
     margin: 0;
   }
