@@ -6,10 +6,13 @@
   margin: auto 0;
   z-index: 1111;
 }
-.navBar .nav-responsive .button-menu-mobile i,
-.navBar .nav-responsive .button-search-mobile i {
+.navBar .nav-responsive .button-menu-mobile ,
+.navBar .nav-responsive .button-search-mobile,
+.navBar .nav-responsive .button-close-menu
+  {
   font-size: 2rem;
   margin: 0.6rem;
+  cursor: pointer;
 }
 .navBar .logo-wrapper,
 .navBar .action-account {
@@ -37,7 +40,6 @@
 
 /* navbar-mobile */
 .navBar .list-menu-mobile{
-  display: none;
   height: 100vh;
   width: 80%;
   background-color: white;
@@ -46,7 +48,8 @@
   padding-left: 0;
   position: fixed;
 }
-.navBar .list-menu-mobile a {
+.navBar .list-menu-mobile a{
+  display: inline-block;
   color: #333;
   font-size: 1.5rem;
   font-family: bold;
@@ -56,7 +59,7 @@
 .navBar .list-menu-mobile li {
   position: relative;
 }
-.navBar .list-menu-mobile i {
+.navBar .list-menu-mobile .icon-wrapper {
   position: absolute;
   top: 0.5rem;
   right: 0;
@@ -69,6 +72,9 @@
 .navBar .list-menu-mobile .list-menu-child .list-menu-child-2 {
   display: none;
 }
+.navBar .list-menu-mobile .nav-item-lv1 .icon-wrapper{
+  font-size: 1.8rem;
+}
 .box-title {
   display: flex;
   justify-content: center;
@@ -78,6 +84,7 @@
   font-weight: bolder;
   color: white;
   font-size: 2rem;
+  position: relative;
 }
 
 /* navbar-mobile end */
@@ -302,7 +309,7 @@
 @media only screen and (max-width: 992px) {
   .homepage .navBar {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-columns: repeat(3, 1fr);
   }
   .navBar .logo-wrapper{
     width: 18rem;

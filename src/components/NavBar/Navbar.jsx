@@ -1,154 +1,187 @@
-import {NavLink,Link, useNavigate} from "react-router-dom";
+import { useState } from "react";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 
 import "../../style/Navbar.css";
 export default function () {
   const navigate = useNavigate();
+  const [isAcitve, setIsActive] = useState(false);
 
   const moveSellPage = (event) => {
     event.stopPropagation();
-    const nameUrl = event.currentTarget.dataset.name;    
+    const nameUrl = event.currentTarget.dataset.name;
     const nameProduct = event.target.name;
-    if(nameUrl){
-      navigate(`/${nameUrl}`,{state: {category: nameProduct}});
+    if (nameUrl) {
+      navigate(`/${nameUrl}`, { state: { category: nameProduct } });
     }
-  }
+  };
+
+  const handleOMenuMobile = () => {
+      setIsActive(!isAcitve)
+  };
+
+
   return (
     <div className="container-fluid container-xxl position-relavtive">
       <div className="navBar d-flex justify-content-between">
         <div className="nav-responsive d-lg-none">
-          <div className="icon-wrapper button-menu-mobile">
+          <div
+            className="icon-wrapper button-menu-mobile"
+            onClick={handleOMenuMobile}
+          >
             <i className="fa-solid fa-bars"></i>
           </div>
-          <ul className="list-menu-mobile">
-            <div className="box-title">Danh mục sản phẩm</div>
-            <li className="nav-item-lv1">
-              <NavLink className="link" to="/">
-                MENU
-              </NavLink>
-            </li>
-            <li className="nav-item-lv1" >
-              <NavLink
-                className="link"
-                to="/collection/all"
-              >
-                SHOP
-              </NavLink>
-              <i className="fa-solid fa-plus" ></i>{" "}
-              {
+          {isAcitve ? (
+            <ul className="list-menu-mobile">
+              <div className="box-title">
+                Danh mục sản phẩm
+                <div className="icon-wrapper button-close-menu me-3" onClick={handleOMenuMobile}>
+                  <i className="fa-solid fa-x"></i>
+                </div>
+              </div>
+              <li className="nav-item-lv1">
+                <NavLink className="link" to="/">
+                  MENU
+                </NavLink>
+              </li>
+              <li className="nav-item-lv1" onClick={moveSellPage}>
+                <NavLink className="link" to="/collection/all">
+                  SHOP
+                </NavLink>
+                <div className="icon-wrapper">
+                  {" "}
+                  <i className="fa-solid fa-plus"></i>{" "}
+                </div>
+                {
                   <ul className="list-menu-child">
-                  <li
-                    className="nav-item-lv2"
-                    data-name ="dâg-chuyền"
-                  >
-                    <Link className="link-lv2">Dây chuyền</Link>
-                  </li>
-                  <li
-                    className="nav-item-lv2"
-                    data-name="Vòng-tay"
-
-                  >
-                    <Link className="link-lv2" name="day_chuyen">
-                      Vòng tay
-                    </Link>
-                  </li>
-                  <li
-                    className="nav-item-lv2"
-                    data-name="Hoagtai"
-
-                  >
-                    <Link className="link-lv2" name="day_chuyen">
-                      Hoa tai
-                    </Link>
-                  </li>
-                  <li
-                    className="nav-item-lv2"
-                    data-name="Nhẫg"
-
-                  >
-                    <Link className="link-lv2" name="day_chuyen">
-                      Nhẫn
-                    </Link>
-                  </li>
-                  <li className="nav-item-lv2">
-                    <Link className="link-lv2" name="day_chuyen">
-                      Bộ trang sức
-                    </Link>
-                  </li>
-                </ul>
-               }
-            </li>
-            <li className="nav-item-lv1">
-              <NavLink className="link">GIFTS</NavLink>
-              <i className="fa-solid fa-plus" ></i>{" "}
-               {
-                    <ul  className="list-menu-child">
-                <li className="nav-item-lv2">
-                  <Link className="link-lv2">Quà tặng năm mới</Link>
-                </li>
-                <li className="nav-item-lv2">
-                  <Link className="link-lv2">Quà tặng Valantine</Link>
-                </li>
-                <li className="nav-item-lv2">
-                  <Link className="link-lv2">Quà tặng Sinh nhật</Link>
-                </li>
-                <li className="nav-item-lv2">
-                  <Link className="link-lv2">Quà tặng cặp đôi</Link>
-                </li>
-                <li className="nav-item-lv2">
-                  <Link className="link-lv2">Ngày kỷ niệm</Link>
-                </li>
-              </ul> 
-               }
-            </li>
-
-            <li className="nav-item-lv1">
-              <NavLink className="link">ABOUT US</NavLink>
-              <i className="fa-solid fa-plus" ></i>{" "}
-            {
+                    <li
+                      className="nav-item-lv2"
+                      data-name="day-chuyen"
+                      onClick={moveSellPage}
+                    >
+                      <Link name="necklace" className="link-lv2">
+                        Dây chuyền
+                      </Link>
+                    </li>
+                    <li
+                      className="nav-item-lv2"
+                      data-name="vong-tay"
+                      onClick={moveSellPage}
+                    >
+                      <Link className="link-lv2" name="bracelet">
+                        Vòng tay
+                      </Link>
+                    </li>
+                    <li
+                      className="nav-item-lv2"
+                      data-name="hoa-tai"
+                      onClick={moveSellPage}
+                    >
+                      <Link className="link-lv2" name="eardrop">
+                        Hoa tai
+                      </Link>
+                    </li>
+                    <li
+                      className="nav-item-lv2"
+                      data-name="nhan"
+                      onClick={moveSellPage}
+                    >
+                      <Link className="link-lv2" name="ring">
+                        Nhẫn
+                      </Link>
+                    </li>
+                    <li className="nav-item-lv2">
+                      <Link className="link-lv2" name="day_chuyen">
+                        Bộ trang sức
+                      </Link>
+                    </li>
+                  </ul>
+                }
+              </li>
+              <li className="nav-item-lv1">
+                <NavLink className="link">GIFTS</NavLink>
+                <div className="icon-wrapper">
+                  <i className="fa-solid fa-plus"></i>{" "}
+                </div>
+                {
                   <ul className="list-menu-child">
-              <li className="nav-item-lv2">
-                <Link className="link-lv2">Về chúng tôi</Link>
+                    <li className="nav-item-lv2">
+                      <Link className="link-lv2">Quà tặng năm mới</Link>
+                    </li>
+                    <li className="nav-item-lv2">
+                      <Link className="link-lv2">Quà tặng Valantine</Link>
+                    </li>
+                    <li className="nav-item-lv2">
+                      <Link className="link-lv2">Quà tặng Sinh nhật</Link>
+                    </li>
+                    <li className="nav-item-lv2">
+                      <Link className="link-lv2">Quà tặng cặp đôi</Link>
+                    </li>
+                    <li className="nav-item-lv2">
+                      <Link className="link-lv2">Ngày kỷ niệm</Link>
+                    </li>
+                  </ul>
+                }
               </li>
-              <li className="nav-item-lv2">
-                <Link className="link-lv2">Chính sách </Link>
-                <i className="fa-solid fa-plus"></i>{" "}
-                <ul className="list-menu-child-2">
-                  <li className="nav-item-lv3">
-                    <Link className="link-lv3">Chính sách bảo hành</Link>
-                  </li>
-                  <li className="nav-item-lv3">
-                    <Link className="link-lv3">Chính sách đổi trả</Link>
-                  </li>
-                  <li className="nav-item-lv3">
-                    <Link className="link-lv3">Chính sách vận chuyển</Link>
-                  </li>
-                  <li className="nav-item-lv3">
-                    <Link className="link-lv3">Chính sách bảo mật</Link>
-                  </li>
-                </ul>
+
+              <li className="nav-item-lv1">
+                <NavLink className="link">ABOUT US</NavLink>
+                <div className="icon-wrapper">
+                  {" "}
+                  <i className="fa-solid fa-plus"></i>{" "}
+                </div>
+                {
+                  <ul className="list-menu-child">
+                    <li className="nav-item-lv2">
+                      <Link className="link-lv2">Về chúng tôi</Link>
+                    </li>
+                    <li className="nav-item-lv2">
+                      <Link className="link-lv2">Chính sách </Link>
+                      <div className="icon-wrapper">
+                        {" "}
+                        <i className="fa-solid fa-plus"></i>{" "}
+                      </div>
+                      <ul className="list-menu-child-2">
+                        <li className="nav-item-lv3">
+                          <Link className="link-lv3">Chính sách bảo hành</Link>
+                        </li>
+                        <li className="nav-item-lv3">
+                          <Link className="link-lv3">Chính sách đổi trả</Link>
+                        </li>
+                        <li className="nav-item-lv3">
+                          <Link className="link-lv3">
+                            Chính sách vận chuyển
+                          </Link>
+                        </li>
+                        <li className="nav-item-lv3">
+                          <Link className="link-lv3">Chính sách bảo mật</Link>
+                        </li>
+                      </ul>
+                    </li>
+                    <li className="nav-item-lv2">
+                      <Link className="link-lv2">Hỗ trợ</Link>
+                      <i className="fa-solid fa-plus"></i>
+                      <ul className="list-menu-child-2">
+                        <li className="nav-item-lv3">
+                          <Link className="link-lv3">Hướng dẫn mua hàng</Link>
+                        </li>
+                        <li className="nav-item-lv3">
+                          <Link className="link-lv3">Hướng dẫn thanh toán</Link>
+                        </li>
+                      </ul>
+                    </li>
+                    <li className="nav-item-lv2">
+                      <Link className="link-lv2">Contact</Link>
+                    </li>
+                  </ul>
+                }
               </li>
-              <li className="nav-item-lv2">
-                <Link className="link-lv2">Hỗ trợ</Link>
-                <i className="fa-solid fa-plus"></i>
-                <ul className="list-menu-child-2">
-                  <li className="nav-item-lv3">
-                    <Link className="link-lv3">Hướng dẫn mua hàng</Link>
-                  </li>
-                  <li className="nav-item-lv3">
-                    <Link className="link-lv3">Hướng dẫn thanh toán</Link>
-                  </li>
-                </ul>
+              <li className="nav-item-lv1">
+                <NavLink className="link">BLOG</NavLink>
               </li>
-              <li className="nav-item-lv2">
-                <Link className="link-lv2">Contact</Link>
-              </li>
-            </ul> 
-            }
-            </li>
-            <li className="nav-item-lv1">
-              <NavLink className="link">BLOG</NavLink>
-            </li>
-          </ul>
+            </ul>
+          ) : (
+            ""
+          )}
           <div className="icon-wrapper button-search-mobile">
             <i className="fa-solid fa-magnifying-glass"></i>{" "}
           </div>
@@ -181,10 +214,12 @@ export default function () {
                     MENU
                   </NavLink>
                 </li>
-                <li className="nav-item-lv1" onClick={moveSellPage} data-name='all'>
-                  <NavLink className="link">
-                    SHOP
-                  </NavLink>
+                <li
+                  className="nav-item-lv1"
+                  onClick={moveSellPage}
+                  data-name="all"
+                >
+                  <NavLink className="link">SHOP</NavLink>
                   <i className="fa-solid fa-chevron-down"></i>
                   <ul className="list-menu-child">
                     <li
@@ -224,7 +259,7 @@ export default function () {
                       </Link>
                     </li>
                     <li className="nav-item-lv2">
-                      <Link name="" className="link-lv2" >
+                      <Link name="" className="link-lv2">
                         Bộ trang sức
                       </Link>
                     </li>

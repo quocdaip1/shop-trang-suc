@@ -5,7 +5,7 @@ export default function () {
     <footer>
       <div className="container">
         <div className="row">
-          <div className="col-3">
+          <div className="col-12 col-lg-3 mb-5">
             <h2 className="footer-title">THÔNG TIN CHUNG</h2>
             <div className="contact">
               <p className="address">
@@ -34,7 +34,7 @@ export default function () {
               </div>
             </div>
           </div>
-          <div className="col-3">
+          <div className="col-12 col-lg-3 mb-5">
             <h2 className="footer-title">
                 BÀI VIẾT MỚI
             </h2>
@@ -60,7 +60,7 @@ export default function () {
               </div>
             </div>
           </div>
-          <div className="col-2">
+          <div className="col-12 col-lg-2 mb-5">
             <h2 className="footer-title">
               VỀ CHÚNG TÔI
             </h2>
@@ -69,7 +69,7 @@ export default function () {
               <li><Link>Giới thiệu</Link></li>
             </ul>
           </div>
-          <div className="col-2">
+          <div className="col-12 col-lg-2 mb-5">
             <h2 className="footer-title">
              HỖ TRỢ
             </h2>
@@ -79,7 +79,7 @@ export default function () {
               <li><Link>Hướng dẫn thanh toán</Link></li>
             </ul>
           </div>
-          <div className="col-2">
+          <div className="col-12 col-lg-2 mb-5">
             <h2 className="footer-title">
              CHÍNH SÁCH
             </h2>
