@@ -14,6 +14,9 @@
   margin: 0.6rem;
   cursor: pointer;
 }
+.navBar .nav-responsive .button-listmenu{
+  cursor: pointer;
+}
 .navBar .logo-wrapper,
 .navBar .action-account {
   padding: 1rem;
@@ -44,9 +47,14 @@
   width: 80%;
   background-color: white;
   top: 0;
-  left: 0;
+  left: -100%;
   padding-left: 0;
   position: fixed;
+  transition: all 1s;
+}
+
+.menuAnimation{
+  left:0 !important;
 }
 .navBar .list-menu-mobile a{
   display: inline-block;

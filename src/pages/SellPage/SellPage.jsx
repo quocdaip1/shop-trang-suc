@@ -1,9 +1,6 @@
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/NavBar/Navbar";
 import useFetchData from "../../useHook/useFetchData";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import useAddVietnameseAccent from "../../useHook/useAddVietnameseAccent";
 import { useLocation } from "react-router-dom";
 
 export default function () {
@@ -16,8 +13,6 @@ export default function () {
     }
     return true;
   });
-  console.log(newlistproducts);
-
   return (
     <div className="sellpage">
       <Navbar />
