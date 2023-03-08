@@ -4,9 +4,7 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import "../../style/Navbar.css";
 export default function () {
   const navigate = useNavigate();
-  const ref = useRef();
   const [isActive, setIsActive] = useState(false);
-  const [isAcitveMenuChild, setIsActiveMenuChild] = useState(false);
 
   const [listMenu, setListMenu] = useState([
     {
@@ -56,7 +54,7 @@ export default function () {
           nameItem: "Hỗ trợ",
           items: [
             { id: 3.31, nameItem: "Hướng dẫn mua hàng" },
-            { id: 3.31, nameItem: "Hướng dẫn bảo hành" },
+            { id: 3.32, nameItem: "Hướng dẫn bảo hành" },
           ],
         },
         { id: 3.4, nameItem: "Contact" },
@@ -76,8 +74,27 @@ export default function () {
     setIsActive(!isActive);
   };
 
-  const handleMenuChildren = () => {
-    setListMenu();
+  const handleMenuChildren = (ItemID,menuID) => {
+    const newListMenu = listMenu.map((menu) => {
+      if(menu.id === menuID){//nếu menu đó có item
+        const newItems = menu.items.map((item) => {
+          return {
+            ...item,
+            active: item.id === ItemID,
+          };
+        })
+        return {
+          ...menu,
+          items: newItems,
+        };
+      }else {
+        return {
+          ...menu,
+          active: menu.id === ItemID,
+        };
+      }
+    });
+    setListMenu(newListMenu);
   };
 
   return (
@@ -261,42 +278,49 @@ export default function () {
             </li>
             {listMenu.map((menu) => {
               return (
-                <li className="nav-item-lv1" onClick={moveSellPage}>
+                <li
+                  key={menu.id}
+                  className="nav-item-lv1"
+                  onClick={moveSellPage}
+                >
                   <NavLink className="link" to="/collection/all">
                     {menu.nameMenu}
                   </NavLink>
                   <div
                     className="icon-wrapper button-listmenu"
-                    onClick={handleMenuChildren}
+                    onClick={() => handleMenuChildren(menu.id,null)}
                   >
-                    {" "}
-                    <i className="fa-solid fa-plus"></i>{" "}
+                    <div className="icon-wrapper">
+                      <i className="fa-solid fa-plus"></i>
+                    </div>
                   </div>
-                  {
-                    <ul className="list-menu-child">
+                  <ul className={menu.active? "list-menu-child d-block": "list-menu-child"}>
                       {menu.items.map((item) => {
                         return (
-                          <li className="nav-item-lv2" onClick={moveSellPage}>
-                            <Link className="link-lv2" name="day_chuyen">
+                          <li
+                            key={item.id}
+                            className="nav-item-lv2"
+                            onClick={moveSellPage}
+                          >
+                            <Link className="link-lv2">
                               {item.nameItem}
                             </Link>
                             {item.items ? (
                               <div
                                 className="icon-wrapper button-listmenu"
-                                onClick={handleMenuChildren}
+                                onClick={() => handleMenuChildren(item.id,menu.id)}
                               >
                                 <i className="fa-solid fa-plus"></i>
                               </div>
                             ) : null}
-                            <ul className="list-menu-child-2">
+                            <ul className={`list-menu-child-2 ${item.active ? "d-block": ""}`}>
                               {item.items
                                 ? item.items.map((item) => {
-                                  {console.log(item)}
-                                    <li className="nav-item-lv3">
-                                      <Link className="link-lv3">
-                                        {item.nameItem}
-                                      </Link>
-                                    </li>;
+                                    return <li key={item.id} className="nav-item-lv3">
+                                    <Link className="link-lv3">
+                                      {item.nameItem}
+                                    </Link>
+                                  </li>;
                                   })
                                 : null}
                             </ul>
@@ -304,7 +328,6 @@ export default function () {
                         );
                       })}
                     </ul>
-                  }
                 </li>
               );
             })}
