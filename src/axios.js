@@ -8,4 +8,9 @@ const myAxios = axios.create({
   },
 });
 
-export default myAxios;
+
+const loadingPage = () => {
+  window.location.reload();
+}
+
+export {myAxios,loadingPage};

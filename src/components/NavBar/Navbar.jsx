@@ -1,23 +1,24 @@
 import { useRef, useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
+import { loadingPage } from "../../axios";
 
 import "../../style/Navbar.css";
 export default function () {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
-
   const [listMenu, setListMenu] = useState([
     {
       id: 1,
       nameMenu: "SHOP",
       active: false,
       items: [
-        { id: 1.1, nameItem: "Dây chuyền" },
-        { id: 1.2, nameItem: "Vòng tay" },
-        { id: 1.3, nameItem: "Hoa tai" },
-        { id: 1.4, nameItem: "Nhẫn" },
-        { id: 1.5, nameItem: "Bộ trang sức" },
+        { id: 1.1, nameItem: "Dây chuyền",nameUrl:"Day-chuyen",nameProduct:"necklet" },
+        { id: 1.2, nameItem: "Vòng tay",nameUrl:"Vong-tay",nameProduct:"bracelet" },
+        { id: 1.3, nameItem: "Hoa tai",nameUrl:"Hoa-tai",nameProduct:"eardrop" },
+        { id: 1.4, nameItem: "Nhẫn",nameUrl:"Nhan",nameProduct:"ring" },
+        { id: 1.5, nameItem: "Bộ trang sức", nameUrl:"Day-chuyen",nameProduct:"braclet"},
       ],
+      nameUrl:"all",nameProduct:"all"
     },
     {
       id: 2,
@@ -74,20 +75,21 @@ export default function () {
     setIsActive(!isActive);
   };
 
-  const handleMenuChildren = (ItemID,menuID) => {
+  const handleMenuChildren = (ItemID, menuID) => {
     const newListMenu = listMenu.map((menu) => {
-      if(menu.id === menuID){//nếu menu đó có item
+      if (menu.id === menuID) {
+        //nếu menu đó có item
         const newItems = menu.items.map((item) => {
           return {
             ...item,
             active: item.id === ItemID,
           };
-        })
+        });
         return {
           ...menu,
           items: newItems,
         };
-      }else {
+      } else {
         return {
           ...menu,
           active: menu.id === ItemID,
@@ -107,156 +109,6 @@ export default function () {
           >
             <i className="fa-solid fa-bars"></i>
           </div>
-          {/* list mobile */}
-          {/* <ul className={isActive? "menuAnimation list-menu-mobile" : "list-menu-mobile"}>
-            <div className="box-title">
-              Danh mục sản phẩm
-              <div
-                className="icon-wrapper button-close-menu me-3"
-                onClick={handleOMenuMobile}
-              >
-                <i className="fa-solid fa-x"></i>
-              </div>
-            </div>
-            <li className="nav-item-lv1">
-              <NavLink className="link" to="/">
-                MENU
-              </NavLink>
-            </li>
-            <li className="nav-item-lv1" onClick={moveSellPage}>
-              <NavLink className="link" to="/collection/all">
-                SHOP
-              </NavLink>
-              <div className="icon-wrapper button-listmenu" onClick={handleMenuChildren}>
-                {" "}
-                <i className="fa-solid fa-plus"></i>{" "}
-              </div>
-              {
-                <ul className="list-menu-child">
-                  <li
-                    className="nav-item-lv2"
-                    data-name="day-chuyen"
-                    onClick={moveSellPage}
-                  >
-                    <Link name="necklace" className="link-lv2">
-                      Dây chuyền
-                    </Link>
-                  </li>
-                  <li
-                    className="nav-item-lv2"
-                    data-name="vong-tay"
-                    onClick={moveSellPage}
-                  >
-                    <Link className="link-lv2" name="bracelet">
-                      Vòng tay
-                    </Link>
-                  </li>
-                  <li
-                    className="nav-item-lv2"
-                    data-name="hoa-tai"
-                    onClick={moveSellPage}
-                  >
-                    <Link className="link-lv2" name="eardrop">
-                      Hoa tai
-                    </Link>
-                  </li>
-                  <li
-                    className="nav-item-lv2"
-                    data-name="nhan"
-                    onClick={moveSellPage}
-                  >
-                    <Link className="link-lv2" name="ring">
-                      Nhẫn
-                    </Link>
-                  </li>
-                  <li className="nav-item-lv2">
-                    <Link className="link-lv2" name="day_chuyen">
-                      Bộ trang sức
-                    </Link>
-                  </li>
-                </ul>
-              }
-            </li>
-            <li className="nav-item-lv1">
-              <NavLink className="link">GIFTS</NavLink>
-              <div className="icon-wrapper button-listmenu">
-                <i className="fa-solid fa-plus"></i>{" "}
-              </div>
-              {
-                <ul className="list-menu-child">
-                  <li className="nav-item-lv2">
-                    <Link className="link-lv2">Quà tặng năm mới</Link>
-                  </li>
-                  <li className="nav-item-lv2">
-                    <Link className="link-lv2">Quà tặng Valantine</Link>
-                  </li>
-                  <li className="nav-item-lv2">
-                    <Link className="link-lv2">Quà tặng Sinh nhật</Link>
-                  </li>
-                  <li className="nav-item-lv2">
-                    <Link className="link-lv2">Quà tặng cặp đôi</Link>
-                  </li>
-                  <li className="nav-item-lv2">
-                    <Link className="link-lv2">Ngày kỷ niệm</Link>
-                  </li>
-                </ul>
-              }
-            </li>
-
-            <li className="nav-item-lv1">
-              <NavLink className="link">ABOUT US</NavLink>
-              <div className="icon-wrapper button-listmenu">
-                {" "}
-                <i className="fa-solid fa-plus"></i>{" "}
-              </div>
-              {
-                <ul className="list-menu-child">
-                  <li className="nav-item-lv2">
-                    <Link className="link-lv2">Về chúng tôi</Link>
-                  </li>
-                  <li className="nav-item-lv2">
-                    <Link className="link-lv2">Chính sách </Link>
-                    <div className="icon-wrapper">
-                      {" "}
-                      <i className="fa-solid fa-plus"></i>{" "}
-                    </div>
-                    <ul className="list-menu-child-2">
-                      <li className="nav-item-lv3">
-                        <Link className="link-lv3">Chính sách bảo hành</Link>
-                      </li>
-                      <li className="nav-item-lv3">
-                        <Link className="link-lv3">Chính sách đổi trả</Link>
-                      </li>
-                      <li className="nav-item-lv3">
-                        <Link className="link-lv3">Chính sách vận chuyển</Link>
-                      </li>
-                      <li className="nav-item-lv3">
-                        <Link className="link-lv3">Chính sách bảo mật</Link>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="nav-item-lv2">
-                    <Link className="link-lv2">Hỗ trợ</Link>
-                    <i className="fa-solid fa-plus"></i>
-                    <ul className="list-menu-child-2">
-                      <li className="nav-item-lv3">
-                        <Link className="link-lv3">Hướng dẫn mua hàng</Link>
-                      </li>
-                      <li className="nav-item-lv3">
-                        <Link className="link-lv3">Hướng dẫn thanh toán</Link>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="nav-item-lv2">
-                    <Link className="link-lv2">Contact</Link>
-                  </li>
-                </ul>
-              }
-            </li>
-            <li className="nav-item-lv1">
-              <NavLink className="link">BLOG</NavLink>
-            </li>
-          </ul> */}
           <ul
             className={
               isActive ? "menuAnimation list-menu-mobile" : "list-menu-mobile"
@@ -282,52 +134,66 @@ export default function () {
                   key={menu.id}
                   className="nav-item-lv1"
                   onClick={moveSellPage}
+                  data-name={menu.nameUrl}
                 >
-                  <NavLink className="link" to="/collection/all">
+                  <NavLink name={menu.nameProduct} className="link" to="/collection/all">
                     {menu.nameMenu}
                   </NavLink>
                   <div
                     className="icon-wrapper button-listmenu"
-                    onClick={() => handleMenuChildren(menu.id,null)}
+                    onClick={() => handleMenuChildren(menu.id, null)}
                   >
                     <div className="icon-wrapper">
                       <i className="fa-solid fa-plus"></i>
                     </div>
                   </div>
-                  <ul className={menu.active? "list-menu-child d-block": "list-menu-child"}>
-                      {menu.items.map((item) => {
-                        return (
-                          <li
-                            key={item.id}
-                            className="nav-item-lv2"
-                            onClick={moveSellPage}
+                  <ul
+                    className={
+                      menu.active
+                        ? "list-menu-child d-block"
+                        : "list-menu-child"
+                    }
+                  >
+                    {menu.items.map((item) => {
+                      return (
+                        <li
+                          key={item.id}
+                          className="nav-item-lv2"
+                          onClick={moveSellPage}
+                          data-name={item.nameUrl}
+                        >
+                          <Link name={item.nameProduct} className="link-lv2">{item.nameItem}</Link>
+                          {item.items ? (
+                            <div
+                              className="icon-wrapper button-listmenu"
+                              onClick={() =>
+                                handleMenuChildren(item.id, menu.id)
+                              }
+                            >
+                              <i className="fa-solid fa-plus"></i>
+                            </div>
+                          ) : null}
+                          <ul
+                            className={`list-menu-child-2 ${
+                              item.active ? "d-block" : ""
+                            }`}
                           >
-                            <Link className="link-lv2">
-                              {item.nameItem}
-                            </Link>
-                            {item.items ? (
-                              <div
-                                className="icon-wrapper button-listmenu"
-                                onClick={() => handleMenuChildren(item.id,menu.id)}
-                              >
-                                <i className="fa-solid fa-plus"></i>
-                              </div>
-                            ) : null}
-                            <ul className={`list-menu-child-2 ${item.active ? "d-block": ""}`}>
-                              {item.items
-                                ? item.items.map((item) => {
-                                    return <li key={item.id} className="nav-item-lv3">
-                                    <Link className="link-lv3">
-                                      {item.nameItem}
-                                    </Link>
-                                  </li>;
-                                  })
-                                : null}
-                            </ul>
-                          </li>
-                        );
-                      })}
-                    </ul>
+                            {item.items
+                              ? item.items.map((item) => {
+                                  return (
+                                    <li key={item.id} className="nav-item-lv3">
+                                      <Link className="link-lv3">
+                                        {item.nameItem}
+                                      </Link>
+                                    </li>
+                                  );
+                                })
+                              : null}
+                          </ul>
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </li>
               );
             })}

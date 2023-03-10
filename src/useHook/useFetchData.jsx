@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import myAxios from "../axios";
+import {myAxios} from "../axios";
 export default function (keyParams) {
   const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(false);
