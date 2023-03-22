@@ -56,7 +56,7 @@ export default function () {
   ]);
 
   useEffect(() => {
-    handlefilterProducts(buttonFilter[2].name, buttonFilter[0].id);
+    handlefilterProducts(buttonFilter[0].name, buttonFilter[0].id);
     const newButtonFilter = buttonFilter.map((button) => ({
       ...button,
       quanlity: showQuantityProduct(button.name),

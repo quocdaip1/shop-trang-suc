@@ -3,6 +3,7 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import { loadingPage } from "../../axios";
 
 import "../../style/Navbar.css";
+import { lazyload } from "../../utils";
 export default function () {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
@@ -12,13 +13,34 @@ export default function () {
       nameMenu: "SHOP",
       active: false,
       items: [
-        { id: 1.1, nameItem: "Dây chuyền",nameUrl:"Day-chuyen",nameProduct:"necklet" },
-        { id: 1.2, nameItem: "Vòng tay",nameUrl:"Vong-tay",nameProduct:"bracelet" },
-        { id: 1.3, nameItem: "Hoa tai",nameUrl:"Hoa-tai",nameProduct:"eardrop" },
-        { id: 1.4, nameItem: "Nhẫn",nameUrl:"Nhan",nameProduct:"ring" },
-        { id: 1.5, nameItem: "Bộ trang sức", nameUrl:"Day-chuyen",nameProduct:"braclet"},
+        {
+          id: 1.1,
+          nameItem: "Dây chuyền",
+          nameUrl: "Day-chuyen",
+          nameProduct: "necklet",
+        },
+        {
+          id: 1.2,
+          nameItem: "Vòng tay",
+          nameUrl: "Vong-tay",
+          nameProduct: "bracelet",
+        },
+        {
+          id: 1.3,
+          nameItem: "Hoa tai",
+          nameUrl: "Hoa-tai",
+          nameProduct: "eardrop",
+        },
+        { id: 1.4, nameItem: "Nhẫn", nameUrl: "Nhan", nameProduct: "ring" },
+        {
+          id: 1.5,
+          nameItem: "Bộ trang sức",
+          nameUrl: "Day-chuyen",
+          nameProduct: "braclet",
+        },
       ],
-      nameUrl:"all",nameProduct:"all"
+      nameUrl: "all",
+      nameProduct: "all",
     },
     {
       id: 2,
@@ -67,7 +89,8 @@ export default function () {
     const nameUrl = event.currentTarget.dataset.name;
     const nameProduct = event.target.name;
     if (nameUrl) {
-      navigate(`/${nameUrl}`, { state: { category: nameProduct } });
+        navigate(`/${nameUrl}`, { state: { category: nameProduct } });
+        lazyload();
     }
   };
 
@@ -75,7 +98,8 @@ export default function () {
     setIsActive(!isActive);
   };
 
-  const handleMenuChildren = (ItemID, menuID) => {
+  const handleMenuChildren = (event,ItemID, menuID) => {
+    event.stopPropagation();
     const newListMenu = listMenu.map((menu) => {
       if (menu.id === menuID) {
         //nếu menu đó có item
@@ -136,16 +160,18 @@ export default function () {
                   onClick={moveSellPage}
                   data-name={menu.nameUrl}
                 >
-                  <NavLink name={menu.nameProduct} className="link" to="/collection/all">
+                  <NavLink
+                    name={menu.nameProduct}
+                    className="link"
+                    to="/collection/all"
+                  >
                     {menu.nameMenu}
                   </NavLink>
                   <div
                     className="icon-wrapper button-listmenu"
-                    onClick={() => handleMenuChildren(menu.id, null)}
+                    onClick={(e) => handleMenuChildren(e,menu.id, null)}
                   >
-                    <div className="icon-wrapper">
-                      <i className="fa-solid fa-plus"></i>
-                    </div>
+                    <i className="fa-solid fa-plus"></i>
                   </div>
                   <ul
                     className={
@@ -162,12 +188,14 @@ export default function () {
                           onClick={moveSellPage}
                           data-name={item.nameUrl}
                         >
-                          <Link name={item.nameProduct} className="link-lv2">{item.nameItem}</Link>
+                          <Link name={item.nameProduct} className="link-lv2">
+                            {item.nameItem}
+                          </Link>
                           {item.items ? (
                             <div
                               className="icon-wrapper button-listmenu"
-                              onClick={() =>
-                                handleMenuChildren(item.id, menu.id)
+                              onClick={(e) =>
+                                handleMenuChildren(e,item.id, menu.id)
                               }
                             >
                               <i className="fa-solid fa-plus"></i>

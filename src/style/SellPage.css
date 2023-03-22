@@ -1,0 +1,38 @@
+/* filter-content */
+.filter-content {
+  height: auto;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.filter-content .filter-container {
+  padding: 0.5rem 1.3rem 0.5rem 1.3rem;
+}
+
+.filter-content .filter-container .list-filter li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.filter-content .filter-container .list-filter li:hover {
+  color: var(--main--color);
+}
+/* end filter-content */
+
+.aside-title, .box-title-product {
+  display: flex;
+  align-items: center;
+  background-color: #f7f8f9;
+  height: 5rem;
+  font-weight: bolder;
+  color: black;
+  font-size: 2rem;
+  position: relative;
+}
+
+.box-title-product h3{
+  margin-left: 2rem;
+  text-transform: uppercase;
+}

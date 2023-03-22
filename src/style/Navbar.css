@@ -75,6 +75,7 @@
 .navBar .list-menu-mobile .nav-item-lv1 {
   margin-left: 1rem;
   margin: 2rem 1rem 0 1rem;
+  z-index: 22222;
 }
 .navBar .list-menu-mobile .list-menu-child,
 .navBar .list-menu-mobile .list-menu-child .list-menu-child-2 {
@@ -83,17 +84,8 @@
 .navBar .list-menu-mobile .nav-item-lv1 .icon-wrapper{
   font-size: 1.8rem;
 }
-.box-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #4caab1;
-  height: 5rem;
-  font-weight: bolder;
-  color: white;
-  font-size: 2rem;
-  position: relative;
-}
+
+
 
 /* navbar-mobile end */
 .navBar .nav-midder .hotline-wrapper h4 a {
@@ -152,6 +144,7 @@
   transform: translateY(20%);
   visibility: hidden;
   padding: 0;
+  z-index: 1111111;
 }
 .nav-midder .down nav .list-menu .nav-item-lv1:hover .list-menu-child {
   transform: translateY(0);

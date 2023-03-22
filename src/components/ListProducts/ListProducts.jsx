@@ -1,8 +1,10 @@
 import Product from "../product/Product";
 import Loading from "../Loanding/Loading";
+import Pagination from "../../useHook/usePagination";
+import { useEffect } from "react";
 
 function SampleNextArrow(props) {
-  const { onClick} = props;
+  const { onClick } = props;
   return (
     <div onClick={onClick} className="next-wrapper">
       <i className="fa-solid fa-chevron-right next-arrow"></i>
@@ -55,20 +57,33 @@ export default function (props) {
     ],
   };
 
-  const {allproducts,loading} = props;
-  if(loading){
+  const { allproducts, loading } = props;
+  const { data, pages, startIndex, endIndex,handlePageChange } = Pagination(allproducts);
+
+  if (loading) {
     return (
       <div className="d-flex justify-content-center align-items-center">
-        <Loading/>
+        <Loading />
       </div>
-    )
+    );
   }
   return (
-    <div className="list-products">
-      {allproducts &&
-        allproducts.map((product) => {
-          return <Product key={product.id} product={product} />;
+    <div className="list-products row">
+      {data &&
+        data.slice(startIndex, endIndex).map((product) => {
+          return (
+            <div className="col-3 mb-5">
+              <Product key={product.id} product={product} />
+            </div>
+          );
         })}
-      </div>
+      <ul className="d-flex justify-content-end">
+        {pages && pages.map((page) => (
+          <li key={page} className="me-2">
+            <button className="btn btn-primary" onClick={() => handlePageChange(page)}>{page}</button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

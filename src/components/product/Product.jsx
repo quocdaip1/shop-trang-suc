@@ -7,6 +7,7 @@ export default function (props) {
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
+
   return (
     <div className="card">
       <div className="img-card-wrapper">

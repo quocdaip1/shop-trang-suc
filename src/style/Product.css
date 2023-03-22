@@ -27,6 +27,7 @@
 }
 .card{
     transition: 100s;
+    border: none !important;
 }
 .card:hover .box-action{
     display: flex;
